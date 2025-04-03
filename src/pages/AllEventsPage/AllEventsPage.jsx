@@ -4,7 +4,7 @@ const AllEventsPage = () => {
 	return (
 		<div>
 			<h1>Alla Evenemang</h1>
-			<Link to="/order">Gå till order</Link>
+			<Link to="/ticketapp-react-exam/order">Gå till order</Link>
 		</div>
 	);
 };

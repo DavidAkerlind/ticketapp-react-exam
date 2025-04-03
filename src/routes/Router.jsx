@@ -9,11 +9,26 @@ const Router = () => {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<SplashScreenPage />} />
-				<Route path="/events" element={<AllEventsPage />} />
-				<Route path="/event/:id" element={<EventDetailPage />} />
-				<Route path="/order" element={<OrderSummaryPage />} />
-				<Route path="/ticket/:id" element={<TicketsPage />} />
+				<Route
+					path="/ticketapp-react-exam"
+					element={<SplashScreenPage />}
+				/>
+				<Route
+					path="/ticketapp-react-exam/events"
+					element={<AllEventsPage />}
+				/>
+				<Route
+					path="/ticketapp-react-exam/event/:id"
+					element={<EventDetailPage />}
+				/>
+				<Route
+					path="/ticketapp-react-exam/order"
+					element={<OrderSummaryPage />}
+				/>
+				<Route
+					path="/ticketapp-react-exam/ticket/:id"
+					element={<TicketsPage />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);
