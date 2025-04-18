@@ -1,0 +1,12 @@
+.nav__list-item {
+	background-color: var(--pink);
+	flex: 1;
+	padding: 1.5rem 1rem;
+	text-shadow: none;
+	font-weight: 600;
+
+	a {
+		padding: 2rem 1.5rem;
+		color: var(--white);
+	}
+}

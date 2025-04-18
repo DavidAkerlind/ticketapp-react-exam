@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Sansita+One&display=swap');
+
 :root {
 	--dark-purple: #231f42;
 	--pink: #f56b9a;
@@ -7,7 +10,7 @@
 	--dark-gray-bg: #e0e0e0;
 	--dark-gray-text: #565656;
 	--light-gray-text: #868686;
-	--
+	--black: #000000;
 }
 
 * {
@@ -17,6 +20,26 @@
 }
 
 .page {
+	font-family: 'Fira Sans', sans-serif;
 	min-height: 100vh;
 	width: 100%;
+	background-color: var(--dark-purple);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.main-content__header {
+	font-family: 'Sansita One', sans-serif;
+	color: var(--pink);
+	font-size: 1.9rem;
+	margin-top: 0.3rem;
+	margin-bottom: 1rem;
+}
+
+.main-content__sub-header {
+	font-size: 1.2rem;
+	font-style: italic;
+	color: var(--white);
+	font-weight: 200;
 }

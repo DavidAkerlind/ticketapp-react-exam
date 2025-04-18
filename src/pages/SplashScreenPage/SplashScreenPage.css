@@ -1,0 +1,18 @@
+.page-splash {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	justify-content: space-between;
+	letter-spacing: 0.1ch;
+	text-shadow: 2px 2px 0 var(--black);
+
+	a {
+		width: 100%;
+		min-height: 100%;
+		text-decoration: none;
+	}
+
+	.page-splash__main-content {
+		padding-top: 30%;
+	}
+}

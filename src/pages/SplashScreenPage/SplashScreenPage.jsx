@@ -1,7 +1,28 @@
-import React from 'react';
+import NavBar from '../../components/NavBar/NavBar';
+import './SplashScreenPage.css';
+import { Link } from 'react-router-dom';
 
 function SplashScreenPage() {
-	return <div></div>;
+	return (
+		<section className="page page-splash">
+			<Link to="/all-events">
+				<section className="page-splash__main-content">
+					<figure className="main-content__img-container">
+						<img
+							className="main-content__img"
+							src="../src/assets/logo.svg"
+							alt="Logo for ticket app"
+						/>
+					</figure>
+					<h1 className="main-content__header">Where It's @</h1>
+					<h2 className="main-content__sub-header">
+						Ticketing made easy
+					</h2>
+				</section>
+			</Link>
+			<NavBar />
+		</section>
+	);
 }
 
 export default SplashScreenPage;
