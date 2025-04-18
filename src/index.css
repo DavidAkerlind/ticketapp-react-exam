@@ -1,5 +1,22 @@
+:root {
+	--dark-purple: #231f42;
+	--pink: #f56b9a;
+	--green: #37aeab;
+	--white: #ffffff;
+	--light-gray-bg: #f7f7f7;
+	--dark-gray-bg: #e0e0e0;
+	--dark-gray-text: #565656;
+	--light-gray-text: #868686;
+	--
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+}
+
+.page {
+	min-height: 100vh;
+	width: 100%;
 }
