@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EventDetails from '../../components/EventDetails/EventDetails';
 import TicketBox from '../../components/TicketBox/TicketBox';
+import Button from '../../components/Button/Button';
 
 function EventDetailPage() {
 	const { id } = useParams();
@@ -40,7 +41,7 @@ function EventDetailPage() {
 			) : (
 				<p className="error-p">Loading...</p>
 			)}
-
+			<Button text="Add to cart" />
 			<NavBar />
 		</section>
 	);

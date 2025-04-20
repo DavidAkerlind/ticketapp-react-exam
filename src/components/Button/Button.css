@@ -1,0 +1,19 @@
+.button {
+	background-color: var(--green);
+	color: var(--white);
+	width: 80%;
+	font-size: 1.5rem;
+	text-align: center;
+	border: none;
+	padding: 1rem;
+	cursor: pointer;
+	border-radius: var(--border-r4);
+	transition: all 0.1s ease-in-out;
+	border-bottom: 2px solid #1d5a58;
+	margin: auto;
+}
+
+.button:active {
+	transform: translateY(2px);
+	border: none;
+}

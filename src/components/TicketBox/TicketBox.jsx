@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
-import './TicketbBox.css';
+import { useEffect, useState } from 'react';
+import './TicketBox.css';
 
 function TicketBox({ price, quantity, handleIncrease, handleDecrease }) {
-	let totalPrice = price;
+	const [totalPrice, setTotalPrice] = useState(price);
+
 	useEffect(() => {
-		totalPrice = price * quantity;
-	}, [price]);
+		setTotalPrice(price * quantity);
+	}, [quantity]);
 
 	return (
 		<section
@@ -14,12 +15,16 @@ function TicketBox({ price, quantity, handleIncrease, handleDecrease }) {
 			<p className="event-details__total">{totalPrice} sek</p>
 			<div className="event-details__quantity">
 				<button
+					className="event-details__button event-details__button--increase"
 					onClick={handleDecrease}
 					aria-label="Decrease ticketamount">
 					−
 				</button>
-				<span>{quantity}</span>
+				<span className="event-details__quantity-amount">
+					{quantity}
+				</span>
 				<button
+					className="event-details__button event-details__button--decrease"
 					onClick={handleIncrease}
 					aria-label="Increase ticketamount">
 					+

@@ -49,14 +49,18 @@
 	text-align: center;
 }
 
-a {
-	text-decoration: none;
-}
-
 .error-p {
 	color: var(--light-gray-bg);
 }
 
 .d-none {
 	display: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+button {
+	border: none;
 }
