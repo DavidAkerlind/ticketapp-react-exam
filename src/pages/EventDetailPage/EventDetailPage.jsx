@@ -4,16 +4,21 @@ import NavBar from '../../components/NavBar/NavBar';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EventDetails from '../../components/EventDetails/EventDetails';
+import TicketBox from '../../components/TicketBox/TicketBox';
 
 function EventDetailPage() {
 	const { id } = useParams();
 	const { data, isLoading, isError } = useFetch();
+	const [quantity, setQuantity] = useState(1);
 
 	if (isLoading) return <p className="error-p">Loading events...</p>;
 	if (isError) return <p className="error-p">Someting went wrong</p>;
 
 	const event = data?.find((event) => event.id.toString() === id);
 	console.log(event);
+
+	const handleIncrease = () => setQuantity((q) => q + 1);
+	const handleDecrease = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
 
 	return (
 		<section className="page page-event">
@@ -23,7 +28,15 @@ function EventDetailPage() {
 				some tickets to
 			</h2>
 			{event ? (
-				<EventDetails event={event} />
+				<>
+					<EventDetails event={event} />
+					<TicketBox
+						price={event.price}
+						quantity={quantity}
+						handleIncrease={handleIncrease}
+						handleDecrease={handleDecrease}
+					/>
+				</>
 			) : (
 				<p className="error-p">Loading...</p>
 			)}
