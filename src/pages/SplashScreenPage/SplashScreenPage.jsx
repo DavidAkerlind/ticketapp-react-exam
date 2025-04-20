@@ -14,10 +14,8 @@ function SplashScreenPage() {
 							alt="Logo for ticket app"
 						/>
 					</figure>
-					<h1 className="main-content__header">Where It's @</h1>
-					<h2 className="main-content__sub-header">
-						Ticketing made easy
-					</h2>
+					<h1 className="page__header">Where It's @</h1>
+					<h2 className="page__sub-header">Ticketing made easy</h2>
 				</section>
 			</Link>
 			<NavBar />

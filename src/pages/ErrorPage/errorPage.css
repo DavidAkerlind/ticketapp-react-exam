@@ -18,7 +18,6 @@
 .page-error__button {
 	padding: 0.7rem 1rem;
 	font-weight: 700;
-	text-decoration: none;
 	background-color: red;
 	border-radius: 4px;
 	color: rgb(255, 255, 255);

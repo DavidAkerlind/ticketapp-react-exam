@@ -1,5 +1,9 @@
 .nav {
+	position: absolute;
+	bottom: 0px;
 	width: 100%;
+	text-align: center;
+	letter-spacing: normal;
 	.nav__list {
 		display: flex;
 		flex-direction: row;

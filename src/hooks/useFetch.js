@@ -11,7 +11,7 @@ export const useFetch = () => {
 		setIsLoading(true);
 		axios
 			.get(url)
-			.then((response) => setData([...response.data]))
+			.then((response) => setData([...response.data.events]))
 			.catch((error) => {
 				console.log('Fetch error: ', error);
 				setIsError(true);

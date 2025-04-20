@@ -1,11 +1,28 @@
-import { Link } from 'react-router-dom';
+import './AllEventsPage.css';
+import NavBar from '../../components/NavBar/NavBar';
+import { useFetch } from '../../hooks/useFetch';
+import EventList from '../../components/EventList/EventList';
+import SearchBar from '../../components/SearchBar/Searchbar';
 
 const AllEventsPage = () => {
+	const { data, isLoading, isError } = useFetch();
+
+	if (isLoading) return <p className="error-p">Loading movies...</p>;
+	if (isError) return <p className="error-p">Someting went wrong</p>;
+
+	console.log(data);
+
 	return (
-		<div>
-			<h1>Alla Evenemang</h1>
-			<Link to="/ticketapp-react-exam/order">Gå till order</Link>
-		</div>
+		<section className="page page-all-events">
+			<h1 className="page__header">Events</h1>
+			<SearchBar />
+			{data !== null ? (
+				<EventList events={data} />
+			) : (
+				<p className="error-p">Loading...</p>
+			)}
+			<NavBar />
+		</section>
 	);
 };
 

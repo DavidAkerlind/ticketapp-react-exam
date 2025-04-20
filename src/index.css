@@ -3,14 +3,16 @@
 
 :root {
 	--dark-purple: #231f42;
+	--light-purple: #393555;
 	--pink: #f56b9a;
-	--green: #37aeab;
+	--green: #3ec4bf;
 	--white: #ffffff;
 	--light-gray-bg: #f7f7f7;
 	--dark-gray-bg: #e0e0e0;
 	--dark-gray-text: #565656;
-	--light-gray-text: #868686;
+	--light-gray-text: #c0c0c0;
 	--black: #000000;
+	--border-r4: 4px;
 }
 
 * {
@@ -27,9 +29,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: relative;
 }
 
-.main-content__header {
+.page__header {
 	font-family: 'Sansita One', sans-serif;
 	color: var(--pink);
 	font-size: 1.9rem;
@@ -37,9 +40,21 @@
 	margin-bottom: 1rem;
 }
 
-.main-content__sub-header {
+.page__sub-header {
 	font-size: 1.2rem;
 	font-style: italic;
 	color: var(--white);
 	font-weight: 200;
+}
+
+a {
+	text-decoration: none;
+}
+
+.error-p {
+	color: var(--light-gray-bg);
+}
+
+.d-none {
+	display: none;
 }
