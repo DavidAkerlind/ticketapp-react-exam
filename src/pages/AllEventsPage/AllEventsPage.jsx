@@ -7,7 +7,7 @@ import SearchBar from '../../components/SearchBar/Searchbar';
 const AllEventsPage = () => {
 	const { data, isLoading, isError } = useFetch();
 
-	if (isLoading) return <p className="error-p">Loading movies...</p>;
+	if (isLoading) return <p className="error-p">Loading events...</p>;
 	if (isError) return <p className="error-p">Someting went wrong</p>;
 
 	console.log(data);
@@ -15,6 +15,7 @@ const AllEventsPage = () => {
 	return (
 		<section className="page page-all-events">
 			<h1 className="page__header">Events</h1>
+
 			<SearchBar />
 			{data !== null ? (
 				<EventList events={data} />

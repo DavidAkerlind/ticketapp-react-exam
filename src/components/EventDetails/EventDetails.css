@@ -1,0 +1,14 @@
+.event-details {
+	margin-top: 4rem;
+}
+.event-details__datetime {
+	color: var(--green);
+	font-weight: 700;
+	font-size: 1.1rem;
+}
+
+.event-details__location {
+	margin-top: 0.5rem;
+	color: var(--dark-gray-bg);
+	font-style: italic;
+}
