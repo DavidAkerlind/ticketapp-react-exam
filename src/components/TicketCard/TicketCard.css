@@ -1,0 +1,5 @@
+.ticket-card {
+	background-color: var(--white);
+	border-radius: var(--border-r4);
+	width: 80vw;
+}

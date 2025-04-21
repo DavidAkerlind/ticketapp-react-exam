@@ -36,5 +36,6 @@ export const generateTicketsForEvent = (event) => {
 		date: event.date,
 		section,
 		seat: baseSeat + i,
+		when: event.when,
 	}));
 };

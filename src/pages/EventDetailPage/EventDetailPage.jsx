@@ -7,6 +7,7 @@ import EventDetails from '../../components/EventDetails/EventDetails';
 import TicketBox from '../../components/TicketBox/TicketBox';
 import Button from '../../components/Button/Button';
 import { useLocalStorageCart } from '../../hooks/useLocalStorageCart';
+import { useCartStore } from '../../store/useCartStore';
 
 function EventDetailPage() {
 	const { id } = useParams();

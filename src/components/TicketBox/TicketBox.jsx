@@ -31,6 +31,7 @@ function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 			when: event.when,
 			price: event.price,
 			amount: amount,
+			where: event.where,
 		});
 		setAmount(1);
 	};
