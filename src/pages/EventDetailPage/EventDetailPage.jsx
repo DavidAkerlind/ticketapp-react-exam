@@ -6,11 +6,14 @@ import { useParams } from 'react-router-dom';
 import EventDetails from '../../components/EventDetails/EventDetails';
 import TicketBox from '../../components/TicketBox/TicketBox';
 import Button from '../../components/Button/Button';
+import { useLocalStorageCart } from '../../hooks/useLocalStorageCart';
 
 function EventDetailPage() {
 	const { id } = useParams();
 	const { data, isLoading, isError } = useFetch();
-	const [quantity, setQuantity] = useState(1);
+	const [amount, setAmount] = useState(1);
+	const { tickets, addTickets, updateAmount, removeTickets, clearCart } =
+		useLocalStorageCart();
 
 	if (isLoading) return <p className="error-p">Loading events...</p>;
 	if (isError) return <p className="error-p">Someting went wrong</p>;
@@ -18,8 +21,26 @@ function EventDetailPage() {
 	const event = data?.find((event) => event.id.toString() === id);
 	console.log(event);
 
-	const handleIncrease = () => setQuantity((q) => q + 1);
-	const handleDecrease = () => setQuantity((q) => (q > 1 ? q - 1 : 1));
+	const handleIncrease = (e) => {
+		e.preventDefault();
+		setAmount((q) => q + 1);
+	};
+	const handleDecrease = (e) => {
+		e.preventDefault();
+		setAmount((q) => (q > 1 ? q - 1 : 1));
+	};
+
+	const handleAddToCart = (e) => {
+		e.preventDefault();
+		addTickets({
+			id: event.id,
+			name: event.name,
+			when: event.when,
+			price: event.price,
+			amount: amount,
+		});
+		setAmount(1);
+	};
 
 	return (
 		<section className="page page-event">
@@ -29,19 +50,22 @@ function EventDetailPage() {
 				some tickets to
 			</h2>
 			{event ? (
-				<>
+				<form>
 					<EventDetails event={event} />
 					<TicketBox
 						price={event.price}
-						quantity={quantity}
+						amount={amount}
 						handleIncrease={handleIncrease}
 						handleDecrease={handleDecrease}
+						event={event}
+						variant="price"
 					/>
-				</>
+					<Button text="Add to cart" onClick={handleAddToCart} />
+				</form>
 			) : (
 				<p className="error-p">Loading...</p>
 			)}
-			<Button text="Add to cart" />
+
 			<NavBar />
 		</section>
 	);

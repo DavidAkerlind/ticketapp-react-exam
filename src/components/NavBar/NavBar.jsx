@@ -12,6 +12,10 @@ function NavBar() {
 			link: '/all-events',
 		},
 		{
+			text: 'Cart',
+			link: '/order-summary',
+		},
+		{
 			text: 'Tickets',
 			link: '/tickets',
 		},

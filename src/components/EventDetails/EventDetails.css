@@ -7,6 +7,13 @@
 	font-size: 1.1rem;
 }
 
+.event-details__datetime--small {
+	font-weight: 500;
+	font-size: 0.9rem;
+	margin-bottom: 0.3rem;
+	margin-left: 0.3rem;
+}
+
 .event-details__location {
 	margin-top: 0.5rem;
 	color: var(--dark-gray-bg);

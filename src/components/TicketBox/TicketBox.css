@@ -9,6 +9,11 @@
 	min-width: 250px;
 }
 
+.event-details__pricebox--big {
+	margin: 2rem;
+	width: 80vw;
+}
+
 .event-details__total {
 	font-size: 1.8rem;
 	font-weight: 700;
