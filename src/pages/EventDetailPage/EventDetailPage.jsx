@@ -16,8 +16,8 @@ function EventDetailPage() {
 	// if (isError) return <p className="error-p">Someting went wrong</p>;
 
 	const event = data?.find((event) => event.id.toString() === id);
-	console.log(event);
 
+	const { tickets, clearCart, generateTicketsFromCart } = useCartStore();
 	return (
 		<section className="page page-event">
 			<h1 className="page__header">Event</h1>

@@ -4,31 +4,39 @@ import { useLocalStorageCart } from '../../hooks/useLocalStorageCart';
 import TicketBox from '../../components/TicketBox/TicketBox';
 import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
+import { useCartStore } from '../../store/useCartStore';
 
 function OrderSummaryPage() {
-	const { tickets, clearCart } = useLocalStorageCart();
+	const { clearCart, generateTicketsFromCart, cartEvents } = useCartStore();
 
 	const handlePurchase = (e) => {
-		e.preventDefault();
-		clearCart;
+		generateTicketsFromCart();
+		clearCart();
 	};
 
 	return (
 		<section className="page page-order">
 			<h1 className="page__header">Cart</h1>
-			{tickets.length > 0 ? (
+			{cartEvents.length > 0 ? (
 				<>
 					<ul>
-						{tickets.map((event, index) => (
+						{cartEvents.map((event, index) => (
 							<TicketBox
 								key={index}
 								event={event}
 								variant="info"
 								startAmount={event.amount}
 							/>
-						))}{' '}
+						))}
 					</ul>
-					<Button text="Purchase tickets" onClick={clearCart} />
+
+					<Link
+						className="button"
+						to="/tickets"
+						onClick={handlePurchase}>
+						Purchase tickets
+					</Link>
+					{/* <Button text="Purchase tickets" onClick={handlePurchase} /> */}
 				</>
 			) : (
 				<>

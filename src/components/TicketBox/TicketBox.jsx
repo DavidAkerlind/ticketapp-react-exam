@@ -3,12 +3,13 @@ import './TicketBox.css';
 import { useLocalStorageCart } from '../../hooks/useLocalStorageCart';
 import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
+import { useCartStore } from '../../store/useCartStore';
 
 function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 	const [totalPrice, setTotalPrice] = useState(event.price);
 	const [amount, setAmount] = useState(startAmount);
-	const { tickets, addTickets, updateAmount, removeTickets, clearCart } =
-		useLocalStorageCart();
+	const { addTickets, updateAmount, removeTickets } = useCartStore();
+
 	useEffect(() => {
 		setTotalPrice(event.price * amount);
 	}, [amount]);
