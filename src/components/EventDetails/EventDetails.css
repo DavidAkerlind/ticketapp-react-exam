@@ -1,5 +1,7 @@
 .event-details {
+	max-width: 80vw;
 	margin-top: 4rem;
+	margin-inline: auto;
 }
 .event-details__datetime {
 	color: var(--green);

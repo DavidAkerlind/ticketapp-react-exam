@@ -2,15 +2,15 @@ import { useEffect, useState } from 'react';
 
 export const useLocalStorageCart = () => {
 	const [tickets, setTickets] = useState(() => {
-		const stored = localStorage.getItem('tickets');
+		const stored = localStorage.getItem('cart');
 		return stored ? JSON.parse(stored) : [];
 	});
 
 	useEffect(() => {
-		localStorage.setItem('tickets', JSON.stringify(tickets));
+		localStorage.setItem('cart', JSON.stringify(tickets));
 	}, [tickets]);
 
-	// 🟢 Lägg till biljetter till varukorgen
+	//  Lägg till biljetter till varukorgen
 	const addTickets = (ticketsToAdd) => {
 		setTickets((prev) => {
 			const existing = prev.find((item) => item.id === ticketsToAdd.id);
@@ -22,32 +22,32 @@ export const useLocalStorageCart = () => {
 						: item
 				);
 			} else {
-				// Lägg till ny post
+				// Lägg till ny event med tuickets
 				return [...prev, ticketsToAdd];
 			}
 		});
 	};
 
-	// Ta bort en hel post
-	const removeTickets = (eventId) => {
-		setTickets((prev) => prev.filter((item) => item.eventId !== eventId));
+	// Ta bort alla tickets från cart på ett event
+	const removeTickets = (id) => {
+		setTickets((prev) => prev.filter((item) => item.id !== id));
 	};
 
-	// 🔁 Uppdatera antalet biljetter i varukorgen
-	const updateAmount = (eventId, newAmount) => {
+	//  Uppdatera antalet biljetter i varukorgen
+	const updateAmount = (id, newAmount) => {
 		if (newAmount <= 0) {
-			removeTickets(eventId);
+			removeTickets(id);
 			return;
 		}
 
 		setTickets((prev) =>
 			prev.map((item) =>
-				item.eventId === eventId ? { ...item, amount: newAmount } : item
+				item.id === id ? { ...item, amount: newAmount } : item
 			)
 		);
 	};
 
-	// 🧹 Töm hela varukorgen (t.ex. vid beställning)
+	// Töm hela varukorgen
 	const clearCart = () => {
 		setTickets([]);
 	};

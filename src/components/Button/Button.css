@@ -1,19 +1,33 @@
 .button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	background-color: var(--green);
 	color: var(--white);
-	width: 80%;
+	width: 80vw;
 	font-size: 1.5rem;
 	text-align: center;
 	border: none;
 	padding: 1rem;
 	cursor: pointer;
+	border-bottom: 3px solid #1d5a58;
+	margin: auto;
 	border-radius: var(--border-r4);
 	transition: all 0.1s ease-in-out;
-	border-bottom: 2px solid #1d5a58;
-	margin: auto;
 }
 
 .button:active {
 	transform: translateY(2px);
 	border: none;
+}
+
+.button--remove {
+	padding: 0.3rem;
+	width: 32px;
+	aspect-ratio: 1/1;
+	color: var();
+	margin: 0.3rem;
+	background-color: var(--red);
+	border-color: #85282c;
+	font-size: 1.2rem;
 }

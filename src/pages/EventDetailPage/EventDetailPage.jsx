@@ -11,36 +11,12 @@ import { useLocalStorageCart } from '../../hooks/useLocalStorageCart';
 function EventDetailPage() {
 	const { id } = useParams();
 	const { data, isLoading, isError } = useFetch();
-	const [amount, setAmount] = useState(1);
-	const { tickets, addTickets, updateAmount, removeTickets, clearCart } =
-		useLocalStorageCart();
-
-	if (isLoading) return <p className="error-p">Loading events...</p>;
-	if (isError) return <p className="error-p">Someting went wrong</p>;
+	// samma här med vit flash
+	// if (isLoading) return <p className="error-p">Loading events...</p>;
+	// if (isError) return <p className="error-p">Someting went wrong</p>;
 
 	const event = data?.find((event) => event.id.toString() === id);
 	console.log(event);
-
-	const handleIncrease = (e) => {
-		e.preventDefault();
-		setAmount((q) => q + 1);
-	};
-	const handleDecrease = (e) => {
-		e.preventDefault();
-		setAmount((q) => (q > 1 ? q - 1 : 1));
-	};
-
-	const handleAddToCart = (e) => {
-		e.preventDefault();
-		addTickets({
-			id: event.id,
-			name: event.name,
-			when: event.when,
-			price: event.price,
-			amount: amount,
-		});
-		setAmount(1);
-	};
 
 	return (
 		<section className="page page-event">
@@ -52,15 +28,7 @@ function EventDetailPage() {
 			{event ? (
 				<form>
 					<EventDetails event={event} />
-					<TicketBox
-						price={event.price}
-						amount={amount}
-						handleIncrease={handleIncrease}
-						handleDecrease={handleDecrease}
-						event={event}
-						variant="price"
-					/>
-					<Button text="Add to cart" onClick={handleAddToCart} />
+					<TicketBox event={event} variant="price" />
 				</form>
 			) : (
 				<p className="error-p">Loading...</p>

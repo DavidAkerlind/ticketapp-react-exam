@@ -7,10 +7,9 @@ import SearchBar from '../../components/SearchBar/Searchbar';
 const AllEventsPage = () => {
 	const { data, isLoading, isError } = useFetch();
 
-	if (isLoading) return <p className="error-p">Loading events...</p>;
-	if (isError) return <p className="error-p">Someting went wrong</p>;
-
-	console.log(data);
+	//Verkar bli en vit stärm i början ifamm man gör detta? antalgigen för att det blir utan page classen
+	// if (isLoading) return <p className="error-p">Loading events...</p>;
+	// if (isError) return <p className="error-p">Someting went wrong</p>;
 
 	return (
 		<section className="page page-all-events">

@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 function NavItem({ text, link }) {
 	return (
 		<li className="nav__list-item">
-			<Link to={link}>{text}</Link>
+			<Link aria-label={`Go to ${text} page`} to={link}>
+				{text}
+			</Link>
 		</li>
 	);
 }
