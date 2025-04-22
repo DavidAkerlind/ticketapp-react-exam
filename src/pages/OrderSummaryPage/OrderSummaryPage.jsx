@@ -40,9 +40,7 @@ function OrderSummaryPage() {
 				</>
 			) : (
 				<>
-					<h2 className="page__sub-header">
-						Your cart is empty <br />
-					</h2>
+					<h2 className="page__sub-header">Your cart is empty</h2>
 					<Link to={`/all-events`} className="button">
 						Browse events →
 					</Link>

@@ -35,3 +35,27 @@ const Router = () => {
 };
 
 export default Router;
+
+// const router = createBrowserRouter([
+// 	{
+// 		path: '/',
+// 		element: <SplashScreenPage />,
+// 		errorElement: <ErrorPage />,
+// 	},
+// 	{
+// 		path: '/all-events',
+// 		element: <AllEventsPage />,
+// 	},
+// 	{
+// 		path: '/event/:id',
+// 		element: <EventDetailPage />,
+// 	},
+// 	{
+// 		path: '/order-summary',
+// 		element: <OrderSummaryPage />,
+// 	},
+// 	{
+// 		path: '/tickets',
+// 		element: <TicketsPage />,
+// 	},
+// ]);
