@@ -52,7 +52,9 @@ function TicketsPage() {
 		<section className="page page-tickets" {...handlers}>
 			<h1 className="page__header">Your tickets</h1>
 
-			<div className="ticket-gallery">
+			<div
+				className="ticket-gallery"
+				aria-label={`Swipe to show next ticket, you have ${allTickets.length} tickets`}>
 				<AnimatePresence custom={direction}>
 					<motion.div
 						key={allTickets[currentIndex].ticketId}
@@ -61,9 +63,12 @@ function TicketsPage() {
 						initial="enter"
 						animate="center"
 						exit="exit"
-						transition={{ duration: 0.4 }}
+						transition={{ duration: 0.3 }}
 						className="ticket-card-wrapper">
-						<TicketCard ticket={allTickets[currentIndex]} />
+						<TicketCard
+							key={currentIndex}
+							ticket={allTickets[currentIndex]}
+						/>
 					</motion.div>
 				</AnimatePresence>
 				<div className="ticket-gallery__dots">
