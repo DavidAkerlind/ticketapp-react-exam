@@ -31,6 +31,7 @@
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+	overflow: hidden;
 }
 
 .page__header {
@@ -52,6 +53,10 @@
 	margin: 0;
 }
 
+.page__header--purple {
+	color: var(--dark-purple);
+	margin-bottom: 0.2rem;
+}
 .page__sub-header {
 	font-size: 1.2rem;
 	font-style: italic;

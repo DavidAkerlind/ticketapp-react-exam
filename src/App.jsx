@@ -13,33 +13,33 @@ import EventDetailPage from './pages/EventDetailPage/EventDetailPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 function App() {
-	const router = createBrowserRouter([
-		{
-			path: '/',
-			element: <SplashScreenPage />,
-			errorElement: <ErrorPage />,
-		},
-		{
-			path: '/all-events',
-			element: <AllEventsPage />,
-		},
-		{
-			path: '/event/:id',
-			element: <EventDetailPage />,
-		},
-		{
-			path: '/order-summary',
-			element: <OrderSummaryPage />,
-		},
-		{
-			path: '/tickets',
-			element: <TicketsPage />,
-		},
-	]);
+	// const router = createBrowserRouter([
+	// 	{
+	// 		path: '/',
+	// 		element: <SplashScreenPage />,
+	// 		errorElement: <ErrorPage />,
+	// 	},
+	// 	{
+	// 		path: '/all-events',
+	// 		element: <AllEventsPage />,
+	// 	},
+	// 	{
+	// 		path: '/event/:id',
+	// 		element: <EventDetailPage />,
+	// 	},
+	// 	{
+	// 		path: '/order-summary',
+	// 		element: <OrderSummaryPage />,
+	// 	},
+	// 	{
+	// 		path: '/tickets',
+	// 		element: <TicketsPage />,
+	// 	},
+	// ]);
 
 	return (
 		<div className="app">
-			{/* <HashRouter>
+			<HashRouter>
 				<Routes>
 					<Route path="/" element={<SplashScreenPage />} />
 					<Route path="/all-events" element={<AllEventsPage />} />
@@ -51,8 +51,8 @@ function App() {
 					<Route path="/tickets" element={<TicketsPage />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
-			</HashRouter> */}
-			<RouterProvider router={router} />
+			</HashRouter>
+			{/* <RouterProvider router={router} /> */}
 		</div>
 	);
 }

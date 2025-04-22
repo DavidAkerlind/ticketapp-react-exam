@@ -1,3 +1,11 @@
+.page-tickets {
+	background: linear-gradient(
+		to bottom,
+		var(--pink) 10%,
+		var(--dark-purple) 40%
+	);
+}
+
 .ticket-gallery {
 	position: relative;
 	width: 100%;
@@ -20,7 +28,7 @@
 	display: flex;
 	justify-content: center;
 	gap: 0.5rem;
-	margin: 1.5rem 0;
+	margin: 0.5rem 0;
 }
 
 .dot {

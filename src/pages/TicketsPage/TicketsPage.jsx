@@ -42,7 +42,7 @@ function TicketsPage() {
 	const variants = {
 		enter: (dir) => ({
 			x: dir > 0 ? 300 : -300,
-			opacity: 0,
+			opacity: 1,
 			scale: 0.9,
 			rotateY: dir > 0 ? 40 : -40,
 			position: 'absolute',
@@ -56,7 +56,7 @@ function TicketsPage() {
 		},
 		exit: (dir) => ({
 			x: dir > 0 ? -300 : 300,
-			opacity: 0,
+			opacity: 1,
 			scale: 0.9,
 			rotateY: dir > 0 ? -40 : 40,
 			position: 'absolute',
@@ -65,7 +65,7 @@ function TicketsPage() {
 
 	return (
 		<section className="page page-tickets" {...handlers}>
-			<h1 className="page__header">My tickets</h1>
+			<h1 className="page__header page__header--purple">My tickets</h1>
 
 			{allTickets.length > 0 ? (
 				<section className="ticket-gallery">
@@ -77,7 +77,7 @@ function TicketsPage() {
 							initial="enter"
 							animate="center"
 							exit="exit"
-							transition={{ duration: 0.3 }}
+							transition={{ duration: 0.2 }}
 							className="ticket-motion-wrapper">
 							<TicketCard ticket={allTickets[currentIndex]} />
 						</motion.div>
