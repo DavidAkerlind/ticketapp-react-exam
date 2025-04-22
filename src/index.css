@@ -9,9 +9,9 @@
 	--red: #e14b4f;
 	--white: #ffffff;
 	--light-gray-bg: #f7f7f7;
-	--dark-gray-bg: #e0e0e0;
-	--dark-gray-text: #565656;
-	--light-gray-text: #c0c0c0;
+	--dark-gray-bg: #e8e8e8;
+	--dark-gray-text: #3f3f3f;
+	--light-gray-text: #7e7e7e;
 	--black: #000000;
 	--border-r4: 4px;
 }
@@ -46,6 +46,10 @@
 	font-size: 1.4rem;
 	margin-left: 0.3rem;
 	margin-bottom: 0.3rem;
+}
+
+.page__header--no-margin {
+	margin: 0;
 }
 
 .page__sub-header {
