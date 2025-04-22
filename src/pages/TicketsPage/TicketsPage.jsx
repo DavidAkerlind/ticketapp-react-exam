@@ -75,8 +75,28 @@ function TicketsPage() {
 							initial="enter"
 							animate="center"
 							exit="exit"
+							drag="x"
+							dragConstraints={{ left: 0, right: 0 }}
+							dragElastic={0.2}
 							transition={{ duration: 0.2 }}
-							className="ticket-motion-wrapper">
+							className="ticket-motion-wrapper"
+							onDragEnd={(event, info) => {
+								const swipeConfidenceThreshold = 100;
+
+								if (
+									info.offset.x < -swipeConfidenceThreshold &&
+									currentIndex < allTickets.length - 1
+								) {
+									setDirection(1);
+									setCurrentIndex(currentIndex + 1);
+								} else if (
+									info.offset.x > swipeConfidenceThreshold &&
+									currentIndex > 0
+								) {
+									setDirection(-1);
+									setCurrentIndex(currentIndex - 1);
+								}
+							}}>
 							<TicketCard ticket={allTickets[currentIndex]} />
 						</motion.div>
 					</AnimatePresence>
