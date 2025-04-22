@@ -65,54 +65,50 @@ function TicketsPage() {
 
 	return (
 		<section className="page page-tickets" {...handlers}>
-			<h1 className="page__header">Your tickets</h1>
+			<h1 className="page__header">My tickets</h1>
 
-			<div className="ticket-gallery">
-				{allTickets.length > 0 ? (
-					<>
-						<AnimatePresence custom={direction} mode="popLayout">
-							<motion.div
-								key={allTickets[currentIndex]?.ticketId}
-								variants={variants}
-								custom={direction}
-								initial="enter"
-								animate="center"
-								exit="exit"
-								transition={{ duration: 0.3 }}
-								className="ticket-motion-wrapper">
-								<TicketCard ticket={allTickets[currentIndex]} />
-							</motion.div>
-						</AnimatePresence>
+			{allTickets.length > 0 ? (
+				<section className="ticket-gallery">
+					<AnimatePresence custom={direction} mode="popLayout">
+						<motion.div
+							key={allTickets[currentIndex]?.ticketId}
+							variants={variants}
+							custom={direction}
+							initial="enter"
+							animate="center"
+							exit="exit"
+							transition={{ duration: 0.3 }}
+							className="ticket-motion-wrapper">
+							<TicketCard ticket={allTickets[currentIndex]} />
+						</motion.div>
+					</AnimatePresence>
 
-						<div className="ticket-gallery__dots">
-							{allTickets.map((_, idx) => (
-								<span
-									key={idx}
-									className={`dot ${
-										idx === currentIndex ? 'active' : ''
-									}`}
-								/>
-							))}
-						</div>
+					<div className="ticket-gallery__dots">
+						{allTickets.map((_, idx) => (
+							<span
+								key={idx}
+								className={`dot ${
+									idx === currentIndex ? 'active' : ''
+								}`}
+							/>
+						))}
+					</div>
 
-						<Link
-							onClick={handleRemove}
-							className="button button--remove-big">
-							Remove all tickets
-						</Link>
-					</>
-				) : (
-					<>
-						<h2 className="page__sub-header">
-							You have no tickets
-						</h2>
+					<Link
+						onClick={handleRemove}
+						className="button button--remove-big">
+						Remove all tickets
+					</Link>
+				</section>
+			) : (
+				<>
+					<h2 className="page__sub-header">You have no tickets</h2>
 
-						<Link to={`/all-events`} className="button">
-							Browse events →
-						</Link>
-					</>
-				)}
-			</div>
+					<Link to={`/all-events`} className="button button--browse">
+						Browse events →
+					</Link>
+				</>
+			)}
 
 			<NavBar />
 		</section>

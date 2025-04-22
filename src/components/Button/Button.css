@@ -11,7 +11,9 @@
 	padding: 1rem;
 	cursor: pointer;
 	border-bottom: 3px solid #1d5a58;
-	margin: auto;
+	margin-inline: auto;
+	margin-top: auto;
+	margin-bottom: 5rem;
 	border-radius: var(--border-r4);
 	transition: all 0.1s ease-in-out;
 }

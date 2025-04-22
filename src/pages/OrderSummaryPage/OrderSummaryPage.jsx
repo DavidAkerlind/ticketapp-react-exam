@@ -19,7 +19,7 @@ function OrderSummaryPage() {
 			<h1 className="page__header">Cart</h1>
 			{cartEvents.length > 0 ? (
 				<>
-					<ul>
+					<ul className="page-order__list">
 						{cartEvents.map((event, index) => (
 							<TicketBox
 								key={index}
@@ -41,7 +41,7 @@ function OrderSummaryPage() {
 			) : (
 				<>
 					<h2 className="page__sub-header">Your cart is empty</h2>
-					<Link to={`/all-events`} className="button">
+					<Link to={`/all-events`} className="button button--browse">
 						Browse events →
 					</Link>
 				</>
