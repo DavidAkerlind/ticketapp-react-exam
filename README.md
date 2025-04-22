@@ -7,6 +7,8 @@ Det här är en biljett-applikation byggd i React som låter användare bläddra
 ### Installation:
 
 ```bash
+git clone https://github.com/DavidAkerlind/ticketapp-react-exam.git
+
 npm install
 npm run dev
 ```
