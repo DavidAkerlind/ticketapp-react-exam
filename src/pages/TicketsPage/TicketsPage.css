@@ -13,6 +13,7 @@
 	display: flex;
 	justify-content: center;
 	max-height: 484px;
+	border-radius: var(--border-r4);
 }
 
 .ticket-gallery__dots {
@@ -33,3 +34,5 @@
 .dot.active {
 	background-color: var(--white);
 }
+
+/* / =============================testing ========================== */

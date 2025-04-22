@@ -15,11 +15,12 @@ function TicketsPage() {
 	const [direction, setDirection] = useState(0);
 
 	const handleRemove = () => {
-		setAllTickets({});
+		setAllTickets([]);
 		clearTickets();
+		setCurrentIndex(0);
 	};
 
-	// Swipe-handlers
+	// Swipe handlers
 	const handlers = useSwipeable({
 		onSwipedLeft: () => {
 			if (currentIndex < allTickets.length - 1) {
@@ -34,27 +35,31 @@ function TicketsPage() {
 			}
 		},
 		preventDefaultTouchmoveEvent: true,
-		trackMouse: true, // gör att man kan swipa även med mus
+		trackMouse: true,
 	});
 
+	// Animation variants
 	const variants = {
 		enter: (dir) => ({
-			x: dir > 0 ? 350 : -350,
+			x: dir > 0 ? 300 : -300,
 			opacity: 0,
+			scale: 0.9,
+			rotateY: dir > 0 ? 40 : -40,
 			position: 'absolute',
-			top: 0,
 		}),
 		center: {
 			x: 0,
 			opacity: 1,
+			scale: 1,
+			rotateY: 0,
 			position: 'relative',
-			top: 0,
 		},
 		exit: (dir) => ({
-			x: dir > 0 ? -350 : 350,
+			x: dir > 0 ? -300 : 300,
 			opacity: 0,
+			scale: 0.9,
+			rotateY: dir > 0 ? -40 : 40,
 			position: 'absolute',
-			top: 0,
 		}),
 	};
 
@@ -62,49 +67,52 @@ function TicketsPage() {
 		<section className="page page-tickets" {...handlers}>
 			<h1 className="page__header">Your tickets</h1>
 
-			{allTickets.length > 0 ? (
-				<>
-					<AnimatePresence custom={direction}>
-						<motion.div
-							key={allTickets[currentIndex].ticketId}
-							variants={variants}
-							custom={direction}
-							initial="enter"
-							animate="center"
-							exit="exit"
-							transition={{ duration: 0.3 }}
-							className="ticket-card-wrapper">
-							<TicketCard
-								key={currentIndex}
-								ticket={allTickets[currentIndex]}
-							/>
-						</motion.div>
-					</AnimatePresence>
-					<section className="ticket-gallery__dots">
-						{allTickets.map((_, index) => (
-							<span
-								key={index}
-								className={`dot ${
-									index === currentIndex ? 'active' : ''
-								}`}
-							/>
-						))}
-					</section>
+			<div className="ticket-gallery">
+				{allTickets.length > 0 ? (
+					<>
+						<AnimatePresence custom={direction} mode="popLayout">
+							<motion.div
+								key={allTickets[currentIndex]?.ticketId}
+								variants={variants}
+								custom={direction}
+								initial="enter"
+								animate="center"
+								exit="exit"
+								transition={{ duration: 0.3 }}
+								className="ticket-motion-wrapper">
+								<TicketCard ticket={allTickets[currentIndex]} />
+							</motion.div>
+						</AnimatePresence>
 
-					<Link
-						className="button button--remove-big"
-						onClick={handleRemove}>
-						Remove all tickets
-					</Link>
-				</>
-			) : (
-				<>
-					<h2 className="page__sub-header">You have no tickets</h2>
-					<Link to={`/all-events`} className="button">
-						Browse events →
-					</Link>
-				</>
-			)}
+						<div className="ticket-gallery__dots">
+							{allTickets.map((_, idx) => (
+								<span
+									key={idx}
+									className={`dot ${
+										idx === currentIndex ? 'active' : ''
+									}`}
+								/>
+							))}
+						</div>
+
+						<Link
+							onClick={handleRemove}
+							className="button button--remove-big">
+							Remove all tickets
+						</Link>
+					</>
+				) : (
+					<>
+						<h2 className="page__sub-header">
+							You have no tickets
+						</h2>
+
+						<Link to={`/all-events`} className="button">
+							Browse events →
+						</Link>
+					</>
+				)}
+			</div>
 
 			<NavBar />
 		</section>
