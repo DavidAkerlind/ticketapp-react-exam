@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import TicketCard from '../../components/TicketCard/TicketCard';
 import { useCartStore } from '../../store/useCartStore';
 import { useSwipeable } from 'react-swipeable';
 import { motion, AnimatePresence } from 'framer-motion';
-import Button from '../../components/Button/Button';
 import './TicketsPage.css';
 import { Link } from 'react-router-dom';
 
@@ -19,30 +18,6 @@ function TicketsPage() {
 		clearTickets();
 		setCurrentIndex(0);
 	};
-
-	// Blockera scrollning för varje TicketCard
-	const preventScroll = (e) => {
-		e.preventDefault();
-	};
-
-	useEffect(() => {
-		// Blockera scrollning på TicketCard
-		const ticketCards = document.querySelectorAll('.ticket-motion-wrapper');
-		ticketCards.forEach((card) => {
-			card.addEventListener('wheel', preventScroll, { passive: false });
-			card.addEventListener('touchmove', preventScroll, {
-				passive: false,
-			});
-		});
-
-		// Städa upp eventlisteners när komponenten unmountas
-		return () => {
-			ticketCards.forEach((card) => {
-				card.removeEventListener('wheel', preventScroll);
-				card.removeEventListener('touchmove', preventScroll);
-			});
-		};
-	}, [allTickets]);
 
 	// Swipe handlers
 	const handlers = useSwipeable({
@@ -90,7 +65,6 @@ function TicketsPage() {
 	return (
 		<section className="page page-tickets" {...handlers}>
 			<h1 className="page__header page__header--purple">My tickets</h1>
-
 			{allTickets.length > 0 ? (
 				<section className="ticket-gallery">
 					<AnimatePresence custom={direction} mode="popLayout">
@@ -106,7 +80,6 @@ function TicketsPage() {
 							<TicketCard ticket={allTickets[currentIndex]} />
 						</motion.div>
 					</AnimatePresence>
-
 					<div className="ticket-gallery__dots">
 						{allTickets.map((_, idx) => (
 							<span
@@ -117,7 +90,6 @@ function TicketsPage() {
 							/>
 						))}
 					</div>
-
 					<Link
 						onClick={handleRemove}
 						className="button button--remove-big">
@@ -133,7 +105,6 @@ function TicketsPage() {
 					</Link>
 				</>
 			)}
-
 			<NavBar />
 		</section>
 	);
