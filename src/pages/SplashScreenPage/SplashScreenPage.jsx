@@ -10,7 +10,7 @@ function SplashScreenPage() {
 					<figure className="main-content__img-container">
 						<img
 							className="main-content__img"
-							src="../src/assets/logo.svg"
+							src="../public/assets/logo.svg"
 							alt="Logo for ticket app"
 						/>
 					</figure>

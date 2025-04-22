@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import SplashScreenPage from '../pages/SplashScreenPage/SplashScreenPage';
 import AllEventsPage from '../pages/AllEventsPage/AllEventsPage';
 import EventDetailPage from '../pages/EventDetailPage/EventDetailPage';
@@ -7,30 +7,16 @@ import TicketsPage from '../pages/TicketsPage/TicketsPage';
 
 const Router = () => {
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Routes>
-				<Route
-					path="/ticketapp-react-exam"
-					element={<SplashScreenPage />}
-				/>
-				<Route
-					path="/ticketapp-react-exam/events"
-					element={<AllEventsPage />}
-				/>
-				<Route
-					path="/ticketapp-react-exam/event/:id"
-					element={<EventDetailPage />}
-				/>
-				<Route
-					path="/ticketapp-react-exam/order"
-					element={<OrderSummaryPage />}
-				/>
-				<Route
-					path="/ticketapp-react-exam/ticket/:id"
-					element={<TicketsPage />}
-				/>
+				<Route path="/" element={<SplashScreenPage />} />
+				<Route path="/all-events" element={<AllEventsPage />} />
+				<Route path="/event/:id" element={<EventDetailPage />} />
+				<Route path="/order-summary" element={<OrderSummaryPage />} />
+				<Route path="/tickets" element={<TicketsPage />} />
+				<Route path="*" element={<ErrorPage />} />
 			</Routes>
-		</BrowserRouter>
+		</HashRouter>
 	);
 };
 
