@@ -2,7 +2,7 @@
 	background-color: var(--white);
 	border-radius: var(--border-r4);
 	width: 80vw;
-	margin-bottom: 2rem;
+	height: 100%;
 }
 
 .ticket-card__header,

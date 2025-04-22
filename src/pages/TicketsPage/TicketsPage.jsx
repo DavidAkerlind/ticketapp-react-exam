@@ -2,18 +2,81 @@ import { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import TicketCard from '../../components/TicketCard/TicketCard';
 import { useCartStore } from '../../store/useCartStore';
+import { useSwipeable } from 'react-swipeable';
+import { motion, AnimatePresence } from 'framer-motion';
 import './TicketsPage.css';
 
 function TicketsPage() {
 	const { tickets, clearTickets } = useCartStore();
 	const [allTickets, setAllTickets] = useState(Object.values(tickets).flat());
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const [direction, setDirection] = useState(0);
+
+	// Swipe-handlers
+	const handlers = useSwipeable({
+		onSwipedLeft: () => {
+			if (currentIndex < allTickets.length - 1) {
+				setDirection(1);
+				setCurrentIndex((prev) => prev + 1);
+			}
+		},
+		onSwipedRight: () => {
+			if (currentIndex > 0) {
+				setDirection(-1);
+				setCurrentIndex((prev) => prev - 1);
+			}
+		},
+		preventDefaultTouchmoveEvent: true,
+		trackMouse: true, // gör att man kan swipa även med mus
+	});
+
+	const variants = {
+		enter: (dir) => ({
+			x: dir > 0 ? 300 : -300,
+			opacity: 0,
+			position: 'absolute',
+		}),
+		center: {
+			x: 0,
+			opacity: 1,
+			position: 'relative',
+		},
+		exit: (dir) => ({
+			x: dir > 0 ? -300 : 300,
+			opacity: 0,
+			position: 'absolute',
+		}),
+	};
 
 	return (
-		<section className="page page-tickets">
+		<section className="page page-tickets" {...handlers}>
 			<h1 className="page__header">Your tickets</h1>
-			{allTickets.map((ticket, index) => (
-				<TicketCard key={index} ticket={ticket} />
-			))}
+
+			<div className="ticket-gallery">
+				<AnimatePresence custom={direction}>
+					<motion.div
+						key={allTickets[currentIndex].ticketId}
+						variants={variants}
+						custom={direction}
+						initial="enter"
+						animate="center"
+						exit="exit"
+						transition={{ duration: 0.4 }}
+						className="ticket-card-wrapper">
+						<TicketCard ticket={allTickets[currentIndex]} />
+					</motion.div>
+				</AnimatePresence>
+				<div className="ticket-gallery__dots">
+					{allTickets.map((_, index) => (
+						<span
+							key={index}
+							className={`dot ${
+								index === currentIndex ? 'active' : ''
+							}`}
+						/>
+					))}
+				</div>
+			</div>
 
 			<NavBar />
 		</section>
@@ -22,23 +85,21 @@ function TicketsPage() {
 
 export default TicketsPage;
 
-// import { useTickets } from "../context/TicketContext";
-// import TicketCard from "../components/TicketCard";
+// // ============================== Utan swipe ==============================
+// function TicketsPage() {
+// 	const { tickets, clearTickets } = useCartStore();
+// 	const [allTickets, setAllTickets] = useState(Object.values(tickets).flat());
 
-// const TicketsPage = () => {
-//   const { tickets } = useTickets();
-//   const eventId = "VM2RSbKQ841XiDhyxfJs2npR"; // Du kan göra detta dynamiskt också
-//   const currentTickets = tickets[eventId] || [];
+// 	return (
+// 		<section className="page page-tickets">
+// 			<h1 className="page__header">Your tickets</h1>
+// 			{allTickets.map((ticket, index) => (
+// 				<TicketCard key={index} ticket={ticket} />
+// 			))}
 
-//   return (
-//     <div className="min-h-screen bg-gradient-to-br from-purple-700 to-pink-400 p-4">
-//       <div className="flex flex-col items-center">
-//         {currentTickets.map((ticket) => (
-//           <TicketCard key={ticket.ticketId} ticket={ticket} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
+// 			<NavBar />
+// 		</section>
+// 	);
+// }
 
 // export default TicketsPage;

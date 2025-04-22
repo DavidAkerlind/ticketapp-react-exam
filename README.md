@@ -1,17 +1,22 @@
-<<<<<<< HEAD
-# ticketapp-react-exam
-Ticketapp-react-exam
-=======
-# React + Vite
+# TicketApp React Exam
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Det här är en biljett-applikation byggd i React som låter användare bläddra igenom sina eventbiljetter i form av kort. Varje biljett är visuellt representerad med detaljerad information samt en QR-kod. Applikationen använder state management med Zustand och hämtar data från `localStorage`.
 
-Currently, two official plugins are available:
+_Installation:_
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> ce6a9d1 (first commit)
+## Krav: Egna hooks eller externa bibliotek
+
+För detta projekt valde jag att integrera **två externa bibliotek** som vi inte gått igenom i klassen:
+
+### 1. `react-swipeable`
+
+Det här biblioteket låter mig hantera swipe-gester på ett enkelt sätt. Det fungerar både på touchskärmar och med mus på desktop. Jag använder det för att kunna svepa mellan biljetter, t.ex. för att ta bort en biljett från listan eller bara navigera mellan dem.
+
+Eftersom applikationen använder kort (TicketCard-komponenten) passar swipefunktion perfekt för att förbättra användarupplevelsen, särskilt på mobil. Det ger en modern känsla och gör gränssnittet mer interaktivt.
