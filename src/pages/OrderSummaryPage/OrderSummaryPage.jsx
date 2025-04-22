@@ -21,7 +21,7 @@ function OrderSummaryPage() {
 
 	return (
 		<section className="page page-order">
-			<h1 className="page__header">Cart</h1>
+			<h1 className="page__header">My cart</h1>
 			{cartEvents.length > 0 ? (
 				<>
 					<ul className="page-order__list">

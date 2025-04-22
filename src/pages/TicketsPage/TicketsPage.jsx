@@ -12,7 +12,9 @@ function TicketsPage() {
 	const [allTickets, setAllTickets] = useState(Object.values(tickets).flat());
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [direction, setDirection] = useState(0);
+	// === testing ===
 
+	// === testing ===
 	const handleRemove = () => {
 		setAllTickets([]);
 		clearTickets();
@@ -43,8 +45,9 @@ function TicketsPage() {
 			x: dir > 0 ? 300 : -300,
 			opacity: 1,
 			scale: 0.9,
-			rotateY: dir > 0 ? 40 : -40,
+			rotateY: dir > 0 ? 45 : -45,
 			position: 'absolute',
+			zIndex: 0,
 		}),
 		center: {
 			x: 0,
@@ -52,14 +55,22 @@ function TicketsPage() {
 			scale: 1,
 			rotateY: 0,
 			position: 'relative',
+			zIndex: 1,
 		},
 		exit: (dir) => ({
 			x: dir > 0 ? -300 : 300,
 			opacity: 1,
 			scale: 0.9,
-			rotateY: dir > 0 ? -40 : 40,
+			rotateY: dir > 0 ? -45 : 45,
 			position: 'absolute',
+			zIndex: 0,
 		}),
+	};
+
+	// Om man klickar på en dot så tas man til dennes ticket index
+	const handleDotClick = (index) => {
+		setDirection(index > currentIndex ? 1 : -1);
+		setCurrentIndex(index);
 	};
 
 	return (
@@ -67,43 +78,70 @@ function TicketsPage() {
 			<h1 className="page__header page__header--purple">My tickets</h1>
 			{allTickets.length > 0 ? (
 				<section className="ticket-gallery">
-					<AnimatePresence custom={direction} mode="popLayout">
-						<motion.div
-							key={allTickets[currentIndex]?.ticketId}
-							variants={variants}
-							custom={direction}
-							initial="enter"
-							animate="center"
-							exit="exit"
-							drag="x"
-							dragConstraints={{ left: 0, right: 0 }}
-							dragElastic={0.2}
-							transition={{ duration: 0.2 }}
-							className="ticket-motion-wrapper"
-							onDragEnd={(event, info) => {
-								const swipeConfidenceThreshold = 100;
+					{' '}
+					<div className="tickets-container">
+						{/* Föregående kort */}
+						{currentIndex > 0 && (
+							<div className="ticket-preview previous">
+								<TicketCard
+									ticket={allTickets[currentIndex - 1]}
+								/>
+							</div>
+						)}
+						<AnimatePresence custom={direction} mode="popLayout">
+							<motion.div
+								key={allTickets[currentIndex]?.ticketId}
+								variants={variants}
+								custom={direction}
+								initial="enter"
+								animate="center"
+								exit="exit"
+								drag="x"
+								dragConstraints={{ left: 0, right: 0 }}
+								dragElastic={0.2}
+								transition={{
+									duration: 0.2,
+									type: 'spring',
+									stiffness: 300,
+									damping: 30,
+								}}
+								className="ticket-motion-wrapper"
+								onDragEnd={(event, info) => {
+									const swipeConfidenceThreshold = 100;
 
-								if (
-									info.offset.x < -swipeConfidenceThreshold &&
-									currentIndex < allTickets.length - 1
-								) {
-									setDirection(1);
-									setCurrentIndex(currentIndex + 1);
-								} else if (
-									info.offset.x > swipeConfidenceThreshold &&
-									currentIndex > 0
-								) {
-									setDirection(-1);
-									setCurrentIndex(currentIndex - 1);
-								}
-							}}>
-							<TicketCard ticket={allTickets[currentIndex]} />
-						</motion.div>
-					</AnimatePresence>
+									if (
+										info.offset.x <
+											-swipeConfidenceThreshold &&
+										currentIndex < allTickets.length - 1
+									) {
+										setDirection(1);
+										setCurrentIndex(currentIndex + 1);
+									} else if (
+										info.offset.x >
+											swipeConfidenceThreshold &&
+										currentIndex > 0
+									) {
+										setDirection(-1);
+										setCurrentIndex(currentIndex - 1);
+									}
+								}}>
+								<TicketCard ticket={allTickets[currentIndex]} />
+							</motion.div>
+						</AnimatePresence>
+						{/* Nästa kort */}
+						{currentIndex < allTickets.length - 1 && (
+							<div className="ticket-preview next">
+								<TicketCard
+									ticket={allTickets[currentIndex + 1]}
+								/>
+							</div>
+						)}
+					</div>
 					<div className="ticket-gallery__dots">
 						{allTickets.map((_, idx) => (
 							<span
 								key={idx}
+								onClick={() => handleDotClick(idx)}
 								className={`dot ${
 									idx === currentIndex ? 'active' : ''
 								}`}
