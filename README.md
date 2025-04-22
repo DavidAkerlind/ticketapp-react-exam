@@ -11,12 +11,16 @@ npm run dev
 
 ---
 
-## Krav: Egna hooks eller externa bibliotek
+## Valda externa bibliotek
 
-För detta projekt valde jag att integrera **två externa bibliotek** som vi inte gått igenom i klassen:
+### 1. Framer Motion
 
-### 1. `react-swipeable`
+Framer Motion är ett animationsbibliotek som jag använder för att skapa övergångar mellan mina biljetter när man swipar. Jag använder `AnimatePresence` för att hantera utgång/ingång av komponenter, och `motion.div` med `variants` för att animera X-position och opacitet. Det ger en mer interaktiv och visuell upplevelse för användaren.
 
-Det här biblioteket låter mig hantera swipe-gester på ett enkelt sätt. Det fungerar både på touchskärmar och med mus på desktop. Jag använder det för att kunna svepa mellan biljetter, t.ex. för att ta bort en biljett från listan eller bara navigera mellan dem.
+### 2. React Swipeable
 
-Eftersom applikationen använder kort (TicketCard-komponenten) passar swipefunktion perfekt för att förbättra användarupplevelsen, särskilt på mobil. Det ger en modern känsla och gör gränssnittet mer interaktivt.
+Detta bibliotek gör det möjligt att swipa mellan biljetter, både på mobil och desktop. Jag använder hooken `useSwipeable` för att lyssna på `onSwipedLeft` och `onSwipedRight` och ändrar index på aktuell biljett. Det gör appen mer användarvänlig, särskilt på touch-enheter.
+
+### 3. React Barcode
+
+Jag använder detta bibliotek för att generera streckkoder till varje biljett. Det ger en realistisk känsla av att biljetterna är digitala och kan scannas, vilket passar bra för den typ av app jag byggt.
