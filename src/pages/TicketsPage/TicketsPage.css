@@ -1,8 +1,8 @@
 .page-tickets {
 	background: linear-gradient(
 		to bottom,
-		var(--pink) 10%,
-		var(--dark-purple) 40%
+		var(--pink) 5%,
+		var(--dark-purple) 50%
 	);
 }
 
@@ -16,12 +16,13 @@
 	justify-content: center;
 	overflow: hidden;
 }
-.ticket-card-wrapper {
+.ticket-motion-wrapper {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	max-height: 484px;
 	border-radius: var(--border-r4);
+	overflow: hidden;
 }
 
 .ticket-gallery__dots {

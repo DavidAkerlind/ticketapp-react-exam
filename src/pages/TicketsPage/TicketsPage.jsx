@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import TicketCard from '../../components/TicketCard/TicketCard';
 import { useCartStore } from '../../store/useCartStore';
@@ -19,6 +19,30 @@ function TicketsPage() {
 		clearTickets();
 		setCurrentIndex(0);
 	};
+
+	// Blockera scrollning för varje TicketCard
+	const preventScroll = (e) => {
+		e.preventDefault();
+	};
+
+	useEffect(() => {
+		// Blockera scrollning på TicketCard
+		const ticketCards = document.querySelectorAll('.ticket-motion-wrapper');
+		ticketCards.forEach((card) => {
+			card.addEventListener('wheel', preventScroll, { passive: false });
+			card.addEventListener('touchmove', preventScroll, {
+				passive: false,
+			});
+		});
+
+		// Städa upp eventlisteners när komponenten unmountas
+		return () => {
+			ticketCards.forEach((card) => {
+				card.removeEventListener('wheel', preventScroll);
+				card.removeEventListener('touchmove', preventScroll);
+			});
+		};
+	}, [allTickets]);
 
 	// Swipe handlers
 	const handlers = useSwipeable({
