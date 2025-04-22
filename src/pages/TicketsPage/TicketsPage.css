@@ -70,7 +70,7 @@
 	transition: all 0.3s ease;
 	z-index: -1;
 }
-.ticket-preview.previous {
+/* .ticket-preview.previous {
 	left: -90px;
 	transform: translateX(-50%) rotateY(45deg);
 }
@@ -78,4 +78,4 @@
 .ticket-preview.next {
 	right: -90px;
 	transform: translateX(50%) rotateY(-45deg);
-}
+} */

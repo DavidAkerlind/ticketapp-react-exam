@@ -3,7 +3,12 @@ import NavBar from '../../components/NavBar/NavBar';
 import TicketCard from '../../components/TicketCard/TicketCard';
 import { useCartStore } from '../../store/useCartStore';
 import { useSwipeable } from 'react-swipeable';
-import { motion, AnimatePresence } from 'framer-motion';
+import {
+	motion,
+	AnimatePresence,
+	useMotionValue,
+	useTransform,
+} from 'framer-motion';
 import './TicketsPage.css';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +18,11 @@ function TicketsPage() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [direction, setDirection] = useState(0);
 	// === testing ===
+	const x = useMotionValue(0);
+	const prevTransform = useTransform(x, [-200, 0, 200], [-150, -230, -30]);
+	const nextTransform = useTransform(x, [-200, 0, 200], [-30, -230, -150]);
+	const prevRotate = useTransform(x, [-200, 0, 200], [30, 45, 60]);
+	const nextRotate = useTransform(x, [-200, 0, 200], [-60, -45, -30]);
 
 	// === testing ===
 	const handleRemove = () => {
@@ -82,11 +92,16 @@ function TicketsPage() {
 					<div className="tickets-container">
 						{/* Föregående kort */}
 						{currentIndex > 0 && (
-							<div className="ticket-preview previous">
+							<motion.div
+								className="ticket-preview previous"
+								style={{
+									left: prevTransform,
+									rotateY: prevRotate,
+								}}>
 								<TicketCard
 									ticket={allTickets[currentIndex - 1]}
 								/>
-							</div>
+							</motion.div>
 						)}
 						<AnimatePresence custom={direction} mode="popLayout">
 							<motion.div
@@ -103,7 +118,7 @@ function TicketsPage() {
 									duration: 0.2,
 									type: 'spring',
 									stiffness: 300,
-									damping: 30,
+									damping: 27,
 								}}
 								className="ticket-motion-wrapper"
 								onDragEnd={(event, info) => {
@@ -130,11 +145,16 @@ function TicketsPage() {
 						</AnimatePresence>
 						{/* Nästa kort */}
 						{currentIndex < allTickets.length - 1 && (
-							<div className="ticket-preview next">
+							<motion.div
+								className="ticket-preview next"
+								style={{
+									right: nextTransform,
+									rotateY: nextRotate,
+								}}>
 								<TicketCard
 									ticket={allTickets[currentIndex + 1]}
 								/>
-							</div>
+							</motion.div>
 						)}
 					</div>
 					<div className="ticket-gallery__dots">
