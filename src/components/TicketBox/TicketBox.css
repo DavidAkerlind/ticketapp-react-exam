@@ -15,6 +15,7 @@
 }
 
 .event-details__total {
+	color: var(--white);
 	font-size: 1.8rem;
 	font-weight: 700;
 	text-shadow: 1px 1px 0 var(--pink);

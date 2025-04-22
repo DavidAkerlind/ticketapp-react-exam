@@ -13,6 +13,11 @@ function OrderSummaryPage() {
 		generateTicketsFromCart();
 		clearCart();
 	};
+	// få totalPrice på varukorgen en snygg oneliner?
+	const totalPrice = cartEvents.reduce(
+		(acc, event) => acc + event.price * event.amount,
+		0
+	);
 
 	return (
 		<section className="page page-order">
@@ -30,13 +35,17 @@ function OrderSummaryPage() {
 						))}
 					</ul>
 
+					<section className="page-order__summary-section">
+						<h2 className="page__sub-header">Total order cost</h2>
+						<p className="event-details__total">{totalPrice} sek</p>
+					</section>
+
 					<Link
 						className="button"
 						to="/tickets"
 						onClick={handlePurchase}>
 						Purchase tickets
 					</Link>
-					{/* <Button text="Purchase tickets" onClick={handlePurchase} /> */}
 				</>
 			) : (
 				<>
