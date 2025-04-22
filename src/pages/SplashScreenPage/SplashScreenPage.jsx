@@ -1,6 +1,7 @@
 import NavBar from '../../components/NavBar/NavBar';
 import './SplashScreenPage.css';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
 
 function SplashScreenPage() {
 	return (
@@ -10,7 +11,7 @@ function SplashScreenPage() {
 					<figure className="main-content__img-container">
 						<img
 							className="main-content__img"
-							src="../public/assets/logo.svg"
+							src={logo}
 							alt="Logo for ticket app"
 						/>
 					</figure>
