@@ -27,7 +27,6 @@
 	padding: 0.3rem;
 	width: 32px;
 	aspect-ratio: 1/1;
-	color: var();
 	margin: 0.3rem;
 	background-color: var(--red);
 	border-color: #85282c;
@@ -37,5 +36,10 @@
 .button--remove-big {
 	background-color: var(--red);
 	border-color: #85282c;
-	margin: 0;
+}
+
+.button--small {
+	width: 100%;
+	font-size: 0.9rem;
+	height: 50px;
 }

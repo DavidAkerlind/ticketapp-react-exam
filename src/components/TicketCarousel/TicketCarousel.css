@@ -1,0 +1,21 @@
+.tickets-container {
+	display: flex;
+	gap: 1rem;
+}
+.ticket-motion-wrapper {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	max-height: 484px;
+	border-radius: var(--border-r4);
+	overflow: hidden;
+	overflow: visible;
+	cursor: grab;
+	transform-style: preserve-3d;
+	will-change: transform;
+	z-index: 2;
+}
+
+.ticket-motion-wrapper:active {
+	cursor: grabbing;
+}

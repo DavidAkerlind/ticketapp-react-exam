@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import './EventItem.css';
 
-function EventItem({ event }) {
+function EventItem({ event, variant = 'price', amount, eventId }) {
 	const { id, name, price, where, when } = event;
 	const [day, month] = when.date.split(' ');
 
 	return (
 		<Link
-			to={`/event/${id}`}
+			to={variant === 'price' ? `/event/${id}` : `/tickets/${eventId}`}
 			className="event-item-link"
 			aria-label={`Read more about the event ${name} on ${when.date}`}>
 			<article className="event-item">
@@ -21,18 +21,28 @@ function EventItem({ event }) {
 				</header>
 
 				<section className="event-item__content">
-					<h2 className="event-item__title">{name}</h2>
+					<h2 className="event-item__title">
+						{name ? name : event.eventName}
+					</h2>
 					<p className="event-item__location">{where}</p>
 					<section className="event-item__details">
 						<p className="event-item__time-details">
 							<time dateTime={when.from}>{when.from}</time> -
 							<time dateTime={when.to}>{when.to}</time>
 						</p>
-						<p
-							className="event-item__price-details"
-							aria-label={`Pris: ${price} kronor`}>
-							<strong>{price} sek</strong>
-						</p>
+						{variant === 'price' ? (
+							<p
+								className="event-item__price-details"
+								aria-label={`Pris: ${price} kronor`}>
+								<strong>{price} sek</strong>
+							</p>
+						) : (
+							<p
+								className="event-item__price-details"
+								aria-label={`Amount of tickets: ${amount}`}>
+								<strong>Tickets: {amount}</strong>
+							</p>
+						)}
 					</section>
 				</section>
 			</article>

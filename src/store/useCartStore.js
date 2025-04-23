@@ -80,10 +80,17 @@ export const useCartStore = create((set) => ({
 			return { tickets: [] };
 		}),
 
-	// removeUsedTickets: (id) =>
-	// 	set((state) => {
-	// 		const updated = state.tickets.filter((item) => item.id !== id);
-	// 		localStorage.setItem('tickets', JSON.stringify(updated));
-	// 		return { tickets: updated };
-	// 	}),
+	removeUsedTickets: (eventId) =>
+		set((state) => {
+			const updatedTickets = { ...state.tickets };
+			delete updatedTickets[eventId];
+
+			if (Object.keys(updatedTickets).length === 0) {
+				localStorage.removeItem('tickets');
+			} else {
+				localStorage.setItem('tickets', JSON.stringify(updatedTickets));
+			}
+
+			return { tickets: updatedTickets };
+		}),
 }));

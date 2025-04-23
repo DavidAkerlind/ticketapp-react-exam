@@ -1,20 +1,20 @@
-import SelectEventItem from '../SelectEventItem/SelectEventItem';
-import { useCartStore } from '../../store/useCartStore';
-function SelectEventList() {
-	const { tickets } = useCartStore();
+import EventItem from '../EventItem/EventItem';
+import './SelectEventList.css';
+function SelectEventList({ tickets }) {
 	return (
-		<ul className="event-selection__list">
-			{Object.entries(tickets).map(([eventId, eventTickets]) => {
+		<ul className="event-list">
+			{Object.entries(tickets).map(([eventId, eventTickets], index) => {
 				// Använder första ticket infon som data för att de ör ju samma event på resterande tickets för det eventet
 				const eventInfo = eventTickets[0];
 				console.log(eventInfo);
-
+				console.log(eventTickets);
 				return (
-					<SelectEventItem
+					<EventItem
 						key={eventId}
-						eventInfo={eventInfo}
+						event={eventInfo}
+						variant="ticket"
 						eventId={eventId}
-						amount={tickets.length}
+						amount={eventTickets.length}
 					/>
 				);
 			})}

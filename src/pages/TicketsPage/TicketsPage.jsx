@@ -17,15 +17,15 @@ import TicketCarousel from '../../components/TicketCarousel/TicketCarousel';
 
 function TicketsPage() {
 	const { id } = useParams();
-	const { tickets, clearTickets } = useCartStore();
-
-	const [allTickets, setAllTickets] = useState(Object.values(tickets[id]));
+	const { tickets, clearTickets, removeUsedTickets } = useCartStore();
+	const eventTickets = tickets[id] || [];
+	const [allTickets, setAllTickets] = useState(eventTickets);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [direction, setDirection] = useState(0);
 
 	const handleRemove = () => {
 		setAllTickets([]);
-		clearTickets();
+		removeUsedTickets(id);
 		setCurrentIndex(0);
 	};
 
@@ -41,18 +41,36 @@ function TicketsPage() {
 						direction={direction}
 						setDirection={setDirection}
 					/>
-					<Link
-						onClick={handleRemove}
-						className="button button--remove-big">
-						Remove all tickets
-					</Link>
+					<section className="page-tickets__buttons">
+						<Link
+							to={`/my-events`}
+							className="button button--browse button--small">
+							↩ Back to my events
+						</Link>
+						<Link
+							onClick={handleRemove}
+							className="button button--remove-big button--small">
+							Remove used tickets
+						</Link>
+					</section>
 				</section>
 			) : (
 				<>
-					<h2 className="page__sub-header">You have no tickets</h2>
-					<Link to={`/all-events`} className="button button--browse">
-						Browse events →
-					</Link>
+					<h2 className="page__sub-header">
+						You have no tickets <br /> for this event
+					</h2>
+					<section className="page-tickets__buttons">
+						<Link
+							to={`/my-events`}
+							className="button button--browse button--small">
+							↩ Back to my events
+						</Link>
+						<Link
+							to={`/all-events`}
+							className="button button--browse button--small">
+							Browse events →
+						</Link>
+					</section>
 				</>
 			)}
 			<NavBar />

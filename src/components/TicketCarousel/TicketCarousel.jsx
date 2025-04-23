@@ -8,6 +8,7 @@ import { useSwipeable } from 'react-swipeable';
 import { ticketAnimationVariants } from '../../utils/animations';
 import TicketCard from '../TicketCard/TicketCard';
 import GalleryDots from '../GalleryDots/GalleryDots';
+import './TicketCarousel.css';
 
 function TicketCarousel({
 	tickets,

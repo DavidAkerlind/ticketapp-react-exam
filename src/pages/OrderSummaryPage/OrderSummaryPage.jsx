@@ -42,7 +42,7 @@ function OrderSummaryPage() {
 
 					<Link
 						className="button"
-						to="/tickets"
+						to="/my-events"
 						onClick={handlePurchase}>
 						Purchase tickets
 					</Link>
