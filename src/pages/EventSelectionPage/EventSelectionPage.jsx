@@ -13,7 +13,12 @@ function EventSelectionPage() {
 			<h1 className="page__header">My Events</h1>
 
 			{hasTickets ? (
-				<SelectEventList tickets={tickets} />
+				<>
+					<SelectEventList tickets={tickets} />
+					<Link to="/all-events" className="button button--browse">
+						Browse events →
+					</Link>
+				</>
 			) : (
 				<>
 					<h2 className="page__sub-header">No tickets found</h2>
