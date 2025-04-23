@@ -1,8 +1,13 @@
+.event-item-link {
+	display: block;
+	border-bottom: 1px solid var(--light-gray-text);
+}
+
 .event-item {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-bottom: 1rem;
+	padding-top: 0.6rem;
 	gap: 1rem;
 }
 
@@ -37,7 +42,6 @@
 	flex-direction: column;
 	gap: 0.3rem;
 	padding-bottom: 0.3rem;
-	border-bottom: 1px solid var(--light-gray-text);
 }
 
 .event-item__title {
@@ -49,7 +53,6 @@
 
 .event-item__location {
 	font-style: italic;
-
 	color: var(--light-gray-text);
 }
 

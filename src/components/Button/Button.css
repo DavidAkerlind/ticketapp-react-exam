@@ -44,3 +44,10 @@
 	font-size: 0.9rem;
 	height: 50px;
 }
+
+.button--show-tickets {
+	/* color: var(--dark-purple); */
+	font-size: 1rem;
+	padding: 0.2rem 0;
+	margin-bottom: 0.2rem;
+}

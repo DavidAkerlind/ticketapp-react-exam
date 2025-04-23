@@ -15,9 +15,9 @@ function EventSelectionPage() {
 			{hasTickets ? (
 				<>
 					<SelectEventList tickets={tickets} />
-					<Link to="/all-events" className="button button--browse">
+					{/* <Link to="/all-events" className="button button--browse">
 						Browse events →
-					</Link>
+					</Link> */}
 				</>
 			) : (
 				<>

@@ -9,7 +9,11 @@ function EventItem({ event, variant = 'price', amount, eventId }) {
 		<Link
 			to={variant === 'price' ? `/event/${id}` : `/tickets/${eventId}`}
 			className="event-item-link"
-			aria-label={`Read more about the event ${name} on ${when.date}`}>
+			aria-label={
+				variant === 'price'
+					? `Read more about the event: ${name} on ${when.date}`
+					: `show your tickets for the event: ${event.eventName} `
+			}>
 			<article className="event-item">
 				<header className="event-item__date">
 					<p dateTime={`2025-03-${day.padStart(2, '0')}`}>
@@ -37,15 +41,24 @@ function EventItem({ event, variant = 'price', amount, eventId }) {
 								<strong>{price} sek</strong>
 							</p>
 						) : (
-							<p
+							<h3
 								className="event-item__price-details"
 								aria-label={`Amount of tickets: ${amount}`}>
 								<strong>Tickets: {amount}</strong>
-							</p>
+							</h3>
 						)}
 					</section>
 				</section>
 			</article>
+			{variant === 'ticket' ? (
+				<p
+					to={`/tickets/${eventId}`}
+					className="button button--show-tickets">
+					Show tickets for {event.eventName} →
+				</p>
+			) : (
+				''
+			)}
 		</Link>
 	);
 }
