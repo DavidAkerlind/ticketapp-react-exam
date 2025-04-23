@@ -11,6 +11,7 @@ import TicketsPage from './pages/TicketsPage/TicketsPage';
 import AllEventsPage from './pages/AllEventsPage/AllEventsPage';
 import EventDetailPage from './pages/EventDetailPage/EventDetailPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import EventSelectionPage from './pages/EventSelectionPage/EventSelectionPage';
 
 function App() {
 	// const router = createBrowserRouter([
@@ -31,6 +32,10 @@ function App() {
 	// 		path: '/order-summary',
 	// 		element: <OrderSummaryPage />,
 	// 	},
+	//  {
+	// 		path: '/my-events',
+	// 		element: <EventSelectionPage />,
+	// 	},
 	// 	{
 	// 		path: '/tickets',
 	// 		element: <TicketsPage />,
@@ -48,7 +53,8 @@ function App() {
 						path="/order-summary"
 						element={<OrderSummaryPage />}
 					/>
-					<Route path="/tickets" element={<TicketsPage />} />
+					<Route path="/my-events" element={<EventSelectionPage />} />
+					<Route path="/tickets/:id" element={<TicketsPage />} />
 					<Route path="*" element={<ErrorPage />} />
 				</Routes>
 			</HashRouter>

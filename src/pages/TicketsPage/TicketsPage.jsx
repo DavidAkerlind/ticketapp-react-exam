@@ -10,164 +10,37 @@ import {
 	useTransform,
 } from 'framer-motion';
 import './TicketsPage.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import GalleryDots from '../../components/GalleryDots/GalleryDots';
+import { ticketAnimationVariants } from '../../utils/animations';
+import TicketCarousel from '../../components/TicketCarousel/TicketCarousel';
 
 function TicketsPage() {
+	const { id } = useParams();
 	const { tickets, clearTickets } = useCartStore();
-	const [allTickets, setAllTickets] = useState(Object.values(tickets).flat());
+
+	const [allTickets, setAllTickets] = useState(Object.values(tickets[id]));
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const [direction, setDirection] = useState(0);
-	// === testing ===
-	const x = useMotionValue(0);
-	const prevTransform = useTransform(x, [-200, 0, 200], [-150, -230, -30]);
-	const nextTransform = useTransform(x, [-200, 0, 200], [-30, -230, -150]);
-	const prevRotate = useTransform(x, [-200, 0, 200], [30, 45, 60]);
-	const nextRotate = useTransform(x, [-200, 0, 200], [-60, -45, -30]);
 
-	// === testing ===
 	const handleRemove = () => {
 		setAllTickets([]);
 		clearTickets();
 		setCurrentIndex(0);
 	};
 
-	// Swipe handlers
-	const handlers = useSwipeable({
-		onSwipedLeft: () => {
-			if (currentIndex < allTickets.length - 1) {
-				setDirection(1);
-				setCurrentIndex((prev) => prev + 1);
-			}
-		},
-		onSwipedRight: () => {
-			if (currentIndex > 0) {
-				setDirection(-1);
-				setCurrentIndex((prev) => prev - 1);
-			}
-		},
-		preventDefaultTouchmoveEvent: true,
-		trackMouse: true,
-	});
-
-	// Animation variants
-	const variants = {
-		enter: (dir) => ({
-			x: dir > 0 ? 300 : -300,
-			opacity: 1,
-			scale: 0.9,
-			rotateY: dir > 0 ? 45 : -45,
-			position: 'absolute',
-			zIndex: 0,
-		}),
-		center: {
-			x: 0,
-			opacity: 1,
-			scale: 1,
-			rotateY: 0,
-			position: 'relative',
-			zIndex: 1,
-		},
-		exit: (dir) => ({
-			x: dir > 0 ? -300 : 300,
-			opacity: 1,
-			scale: 0.9,
-			rotateY: dir > 0 ? -45 : 45,
-			position: 'absolute',
-			zIndex: 0,
-		}),
-	};
-
-	// Om man klickar på en dot så tas man til dennes ticket index
-	const handleDotClick = (index) => {
-		setDirection(index > currentIndex ? 1 : -1);
-		setCurrentIndex(index);
-	};
-
 	return (
-		<section className="page page-tickets" {...handlers}>
+		<section className="page page-tickets">
 			<h1 className="page__header page__header--purple">My tickets</h1>
 			{allTickets.length > 0 ? (
 				<section className="ticket-gallery">
-					{' '}
-					<div className="tickets-container">
-						{/* Föregående kort */}
-						{currentIndex > 0 && (
-							<motion.div
-								className="ticket-preview previous"
-								style={{
-									left: prevTransform,
-									rotateY: prevRotate,
-								}}>
-								<TicketCard
-									ticket={allTickets[currentIndex - 1]}
-								/>
-							</motion.div>
-						)}
-						<AnimatePresence custom={direction} mode="popLayout">
-							<motion.div
-								key={allTickets[currentIndex]?.ticketId}
-								variants={variants}
-								custom={direction}
-								initial="enter"
-								animate="center"
-								exit="exit"
-								drag="x"
-								dragConstraints={{ left: 0, right: 0 }}
-								dragElastic={0.2}
-								transition={{
-									duration: 0.2,
-									type: 'spring',
-									stiffness: 300,
-									damping: 27,
-								}}
-								className="ticket-motion-wrapper"
-								onDragEnd={(event, info) => {
-									const swipeConfidenceThreshold = 100;
-
-									if (
-										info.offset.x <
-											-swipeConfidenceThreshold &&
-										currentIndex < allTickets.length - 1
-									) {
-										setDirection(1);
-										setCurrentIndex(currentIndex + 1);
-									} else if (
-										info.offset.x >
-											swipeConfidenceThreshold &&
-										currentIndex > 0
-									) {
-										setDirection(-1);
-										setCurrentIndex(currentIndex - 1);
-									}
-								}}>
-								<TicketCard ticket={allTickets[currentIndex]} />
-							</motion.div>
-						</AnimatePresence>
-						{/* Nästa kort */}
-						{currentIndex < allTickets.length - 1 && (
-							<motion.div
-								className="ticket-preview next"
-								style={{
-									right: nextTransform,
-									rotateY: nextRotate,
-								}}>
-								<TicketCard
-									ticket={allTickets[currentIndex + 1]}
-								/>
-							</motion.div>
-						)}
-					</div>
-					<div className="ticket-gallery__dots">
-						{allTickets.map((_, idx) => (
-							<span
-								key={idx}
-								onClick={() => handleDotClick(idx)}
-								className={`dot ${
-									idx === currentIndex ? 'active' : ''
-								}`}
-							/>
-						))}
-					</div>
+					<TicketCarousel
+						tickets={allTickets}
+						currentIndex={currentIndex}
+						setCurrentIndex={setCurrentIndex}
+						direction={direction}
+						setDirection={setDirection}
+					/>
 					<Link
 						onClick={handleRemove}
 						className="button button--remove-big">
@@ -177,7 +50,6 @@ function TicketsPage() {
 			) : (
 				<>
 					<h2 className="page__sub-header">You have no tickets</h2>
-
 					<Link to={`/all-events`} className="button button--browse">
 						Browse events →
 					</Link>

@@ -17,7 +17,7 @@ function NavBar() {
 		},
 		{
 			text: 'Tickets',
-			link: '/tickets',
+			link: '/my-events',
 		},
 	];
 

@@ -39,26 +39,6 @@
 	cursor: grabbing;
 }
 
-.ticket-gallery__dots {
-	display: flex;
-	justify-content: center;
-	gap: 0.6rem;
-	margin: 0.7rem 0;
-}
-
-.dot {
-	width: 0.7rem;
-	height: 0.7rem;
-	border-radius: 50%;
-	background-color: var(--light-purple);
-	transition: background-color 0.3s ease-in-out;
-	cursor: pointer;
-}
-
-.dot.active {
-	background-color: var(--white);
-}
-
 /* / =============================testing ========================== */
 
 .ticket-preview {
