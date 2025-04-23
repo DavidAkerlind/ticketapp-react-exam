@@ -54,7 +54,7 @@ function EventItem({ event, variant = 'price', amount, eventId }) {
 				<p
 					to={`/tickets/${eventId}`}
 					className="button button--show-tickets">
-					Show tickets for {event.eventName} →
+					Show tickets →
 				</p>
 			) : (
 				''

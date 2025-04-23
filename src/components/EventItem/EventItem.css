@@ -1,6 +1,7 @@
 .event-item-link {
 	display: block;
-	border-bottom: 1px solid var(--light-gray-text);
+	border-bottom: 2px solid var(--light-gray-text);
+	box-shadow: 0 15px 8px -10px rgba(0, 0, 0, 0.605);
 }
 
 .event-item {

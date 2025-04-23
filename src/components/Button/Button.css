@@ -48,6 +48,9 @@
 .button--show-tickets {
 	/* color: var(--dark-purple); */
 	font-size: 1rem;
-	padding: 0.2rem 0;
+	padding: 0.5rem 0;
 	margin-bottom: 0.2rem;
+	margin: 0.2rem 0 0.5rem 0;
+	/* background-color: transparent;
+	border: none; */
 }
