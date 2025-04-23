@@ -53,7 +53,7 @@ function TicketsPage() {
 						<Link
 							to={`/my-events`}
 							className="button button--browse button--small">
-							↩ Back to my events
+							Back to my events
 						</Link>
 						<Link
 							to={`/all-events`}

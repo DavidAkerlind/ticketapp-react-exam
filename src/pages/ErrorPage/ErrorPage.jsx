@@ -1,23 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.svg';
 import './errorPage.css';
 
 function ErrorPage() {
 	return (
 		<section className="page page-error">
-			<figure className="page-error__image-container">
+			<figure className="main-content__img-container">
 				<img
-					src="../src/assets/404-error.svg"
-					alt="Not found"
-					className="page-error__image"
+					className="main-content__img"
+					src={logo}
+					alt="Logo for ticket app"
 				/>
 			</figure>
-			<h1 className="page-error__title">The page was not found</h1>
-			<p className="page-error__text">
-				This is not the page you were looking for. Check the link or go
-				back to the home page.
-			</p>
-			<Link to="/" className="page-error__button">
+
+			<h1 className="page__header">This is not Where its @ </h1>
+			<h2 className="page__sub-header">
+				The page was not found
+				<br /> Check the link or go back to the home page.
+			</h2>
+
+			<Link to="/" className="button">
 				Go to homepage
 			</Link>
 		</section>
