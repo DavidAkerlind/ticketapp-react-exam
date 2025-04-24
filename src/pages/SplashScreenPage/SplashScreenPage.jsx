@@ -13,6 +13,7 @@ function SplashScreenPage() {
 							className="main-content__img"
 							src={logo}
 							alt="Logo for ticket app"
+							loading="lazy"
 						/>
 					</figure>
 					<h1 className="page__header">Where It's @</h1>
