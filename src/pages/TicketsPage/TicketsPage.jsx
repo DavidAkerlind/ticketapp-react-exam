@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
-import { useCartStore } from '../../store/useCartStore';
+import { useTicketStore } from '../../store/useTicketStore';
 import './TicketsPage.css';
 import { Link, useParams } from 'react-router-dom';
 import TicketCarousel from '../../components/TicketCarousel/TicketCarousel';
 
 function TicketsPage() {
 	const { id } = useParams();
-	const { tickets, removeUsedTickets } = useCartStore();
+	const { tickets, removeUsedTickets } = useTicketStore();
 	const eventTickets = tickets[id] || [];
 	const [allTickets, setAllTickets] = useState(eventTickets);
 	const [currentIndex, setCurrentIndex] = useState(0);

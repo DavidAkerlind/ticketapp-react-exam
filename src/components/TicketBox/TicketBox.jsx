@@ -5,10 +5,13 @@ import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
 
+// Ganska lång komponent funderade på om man skulle göra två olika filer för varje variant
+//  och sedan importera dem här, och returnera den som mann vill ha?
+
 function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 	const [totalPrice, setTotalPrice] = useState(event.price);
 	const [amount, setAmount] = useState(startAmount);
-	const { addTickets, updateAmount, removeTickets } = useCartStore();
+	const { addTickets, updateAmount, removeCartItem } = useCartStore();
 
 	useEffect(() => {
 		setTotalPrice(event.price * amount);
@@ -24,7 +27,6 @@ function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 	};
 
 	const handleAddToCart = (e) => {
-		// e.preventDefault();
 		addTickets({
 			id: event.id,
 			name: event.name,
@@ -52,7 +54,7 @@ function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 
 	const handleRemove = (e) => {
 		e.preventDefault();
-		removeTickets(event.id);
+		removeCartItem(event.id);
 		updateAmount(event.id, 0);
 	};
 

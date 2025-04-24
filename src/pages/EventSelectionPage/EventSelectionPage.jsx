@@ -1,11 +1,11 @@
 import NavBar from '../../components/NavBar/NavBar';
 import './EventSelectionPage.css';
 import { Link } from 'react-router-dom';
-import { useCartStore } from '../../store/useCartStore';
+import { useTicketStore } from '../../store/useTicketStore';
 import SelectEventList from '../../components/SelectEventList/SelectEventList';
 
 function EventSelectionPage() {
-	const { tickets } = useCartStore();
+	const { tickets } = useTicketStore();
 	const hasTickets = Object.keys(tickets).length > 0;
 
 	return (
@@ -15,9 +15,6 @@ function EventSelectionPage() {
 			{hasTickets ? (
 				<>
 					<SelectEventList tickets={tickets} />
-					{/* <Link to="/all-events" className="button button--browse">
-						Browse events →
-					</Link> */}
 				</>
 			) : (
 				<>

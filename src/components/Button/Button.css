@@ -16,7 +16,7 @@
 	margin-bottom: 5rem;
 	border-radius: var(--border-r4);
 	transition: all 0.1s ease-in-out;
-	margin-bottom: 35vw;
+	margin-bottom: 20vh;
 }
 
 .button:active {
@@ -26,12 +26,12 @@
 
 .button--remove {
 	padding: 0.3rem;
-	width: 32px;
+	width: 28px;
 	aspect-ratio: 1/1;
 	margin: 0.3rem;
 	background-color: var(--red);
 	border-color: #85282c;
-	font-size: 1.2rem;
+	font-size: 1rem;
 }
 
 .button--remove-big {

@@ -1,16 +1,15 @@
 import './OrderSummaryPage.css';
 import NavBar from '../../components/NavBar/NavBar';
-import { useLocalStorageCart } from '../../hooks/useLocalStorageCart';
 import TicketBox from '../../components/TicketBox/TicketBox';
-import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
+import { useTicketStore } from '../../store/useTicketStore';
 
 function OrderSummaryPage() {
-	const { clearCart, generateTicketsFromCart, cartEvents } = useCartStore();
-
+	const { clearCart, cartEvents } = useCartStore();
+	const { generateTicketsFromCart } = useTicketStore();
 	const handlePurchase = (e) => {
-		generateTicketsFromCart();
+		generateTicketsFromCart(cartEvents);
 		clearCart();
 	};
 	// få totalPrice på varukorgen en snygg oneliner?
@@ -49,7 +48,7 @@ function OrderSummaryPage() {
 				</>
 			) : (
 				<>
-					<h2 className="page__sub-header">Your cart is empty</h2>
+					<h2 className="page__sub-header">Cart is empty</h2>
 					<Link to={`/all-events`} className="button button--browse">
 						Browse events →
 					</Link>
