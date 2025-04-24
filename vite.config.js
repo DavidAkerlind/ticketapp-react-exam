@@ -7,7 +7,6 @@ export default defineConfig({
 	base: '/ticketapp-react-exam/',
 	plugins: [
 		react(),
-		visualizer({ open: true }),
 		compression({ algorithm: 'brotliCompress' }), // eller gzip
 	],
 	build: {
