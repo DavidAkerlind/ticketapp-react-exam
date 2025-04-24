@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './TicketBox.css';
-import { useLocalStorageCart } from '../../hooks/useLocalStorageCart';
 import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';

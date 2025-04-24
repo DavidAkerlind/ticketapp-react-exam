@@ -1,5 +1,3 @@
-// utils.js
-
 export const generateTicketId = () => {
 	const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	return Array.from(
@@ -7,18 +5,7 @@ export const generateTicketId = () => {
 		() => chars[Math.floor(Math.random() * chars.length)]
 	).join('');
 };
-//	    'H',
-// 		'I',
-// 		'J',
-// 		'K',
-// 		'L',
-// 		'M',
-// 		'N',
-// 		'O',
-// 		'P',
-// 		'Q',
-// 		'R',
-//
+
 const getRandomSection = () => {
 	const sections = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 	return sections[Math.floor(Math.random() * sections.length)];
