@@ -1,0 +1,1 @@
+.nav__list-item{background-color:var(--pink);flex:1;padding-top:1.5rem;padding-bottom:1.5rem;text-shadow:none;font-weight:600}.nav__list-item a{padding-top:1.5rem;padding-bottom:1.5rem;color:var(--white);min-width:100px}.nav{position:fixed;bottom:0;width:100%;text-align:center;letter-spacing:normal}.nav .nav__list{display:flex;flex-direction:row;list-style-type:none}
