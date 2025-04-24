@@ -2,6 +2,7 @@ import { useState } from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import { useTicketStore } from '../../store/useTicketStore';
 import './TicketsPage.css';
+import '../../components/Button/Button.css';
 import { Link, useParams } from 'react-router-dom';
 import TicketCarousel from '../../components/TicketCarousel/TicketCarousel';
 

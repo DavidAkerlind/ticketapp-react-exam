@@ -54,7 +54,7 @@
 
 .event-item__location {
 	font-style: italic;
-	color: var(--light-gray-text);
+	color: var(--lighter-gray-text);
 }
 
 .event-item__details {
@@ -66,4 +66,10 @@
 .event-item__price-details {
 	color: var(--green);
 	font-size: 1.1rem;
+}
+
+.event-item__flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }

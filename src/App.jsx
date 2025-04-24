@@ -5,13 +5,23 @@ import {
 	Routes,
 	Route,
 } from 'react-router-dom';
-import SplashScreenPage from './pages/SplashScreenPage/SplashScreenPage';
-import OrderSummaryPage from './pages/OrderSummaryPage/OrderSummaryPage';
-import TicketsPage from './pages/TicketsPage/TicketsPage';
-import AllEventsPage from './pages/AllEventsPage/AllEventsPage';
-import EventDetailPage from './pages/EventDetailPage/EventDetailPage';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
-import EventSelectionPage from './pages/EventSelectionPage/EventSelectionPage';
+import { lazy, Suspense } from 'react';
+
+const SplashScreenPage = lazy(() =>
+	import('./pages/SplashScreenPage/SplashScreenPage')
+);
+const OrderSummaryPage = lazy(() =>
+	import('./pages/OrderSummaryPage/OrderSummaryPage')
+);
+const TicketsPage = lazy(() => import('./pages/TicketsPage/TicketsPage'));
+const AllEventsPage = lazy(() => import('./pages/AllEventsPage/AllEventsPage'));
+const EventDetailPage = lazy(() =>
+	import('./pages/EventDetailPage/EventDetailPage')
+);
+const ErrorPage = lazy(() => import('./pages/ErrorPage/ErrorPage'));
+const EventSelectionPage = lazy(() =>
+	import('./pages/EventSelectionPage/EventSelectionPage')
+);
 
 function App() {
 	// const router = createBrowserRouter([
@@ -46,16 +56,83 @@ function App() {
 		<div className="app">
 			<HashRouter>
 				<Routes>
-					<Route path="/" element={<SplashScreenPage />} />
-					<Route path="/all-events" element={<AllEventsPage />} />
-					<Route path="/event/:id" element={<EventDetailPage />} />
+					<Route
+						path="/"
+						element={
+							<Suspense
+								fallback={
+									<div className="page">Loading...</div>
+								}>
+								<SplashScreenPage />
+							</Suspense>
+						}
+					/>
 					<Route
 						path="/order-summary"
-						element={<OrderSummaryPage />}
+						element={
+							<Suspense
+								fallback={
+									<div className="page">Loading...</div>
+								}>
+								<OrderSummaryPage />
+							</Suspense>
+						}
 					/>
-					<Route path="/my-events" element={<EventSelectionPage />} />
-					<Route path="/tickets/:id" element={<TicketsPage />} />
-					<Route path="*" element={<ErrorPage />} />
+					<Route
+						path="/tickets/:id"
+						element={
+							<Suspense
+								fallback={
+									<div className="page">Loading...</div>
+								}>
+								<TicketsPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/all-events"
+						element={
+							<Suspense
+								fallback={
+									<div className="page">Loading...</div>
+								}>
+								<AllEventsPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/event/:id"
+						element={
+							<Suspense
+								fallback={
+									<div className="page">Loading...</div>
+								}>
+								<EventDetailPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/my-events"
+						element={
+							<Suspense
+								fallback={
+									<div className="page">Loading...</div>
+								}>
+								<EventSelectionPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="*"
+						element={
+							<Suspense
+								fallback={
+									<div className="page">Loading...</div>
+								}>
+								<ErrorPage />
+							</Suspense>
+						}
+					/>
 				</Routes>
 			</HashRouter>
 			{/* <RouterProvider router={router} /> */}

@@ -37,7 +37,7 @@ function EventItem({ event, variant = 'price', amount, eventId }) {
 
 					<section className="event-item__content">
 						{variant === 'ticket' ? (
-							<div className="event-details__flex">
+							<div className="event-item__flex">
 								<h2 className="event-item__title">
 									{name ? name : event.eventName}
 								</h2>
