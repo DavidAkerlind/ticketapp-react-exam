@@ -33,6 +33,7 @@
 	align-items: center;
 	position: relative;
 	overflow: hidden;
+	color: var(--white);
 }
 
 .page__header {
@@ -80,4 +81,8 @@ a {
 
 button {
 	border: none;
+}
+
+ul {
+	list-style-type: none;
 }

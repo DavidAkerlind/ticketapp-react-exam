@@ -69,3 +69,7 @@
 	color: var(--light-gray-text);
 	letter-spacing: 0.5ch;
 }
+
+.ticket-card__seat-info {
+	color: var(--dark-gray-text);
+}
