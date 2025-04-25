@@ -5,6 +5,10 @@ import './TicketsPage.css';
 import '../../components/Button/Button.css';
 import { Link, useParams } from 'react-router-dom';
 import TicketCarousel from '../../components/TicketCarousel/TicketCarousel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faReply } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faUndo } from '@fortawesome/free-solid-svg-icons';
 
 function TicketsPage() {
 	const { id } = useParams();
@@ -36,12 +40,14 @@ function TicketsPage() {
 						<Link
 							to={`/my-events`}
 							className="button button--browse button--small">
-							↩ Back to my events
+							<FontAwesomeIcon icon={faReply} />
+							Back to my events
 						</Link>
 						<Link
 							onClick={handleRemove}
 							className="button button--remove-big button--small">
 							Remove used tickets
+							<FontAwesomeIcon icon={faTrash} />
 						</Link>
 					</section>
 				</section>
@@ -54,6 +60,7 @@ function TicketsPage() {
 						<Link
 							to={`/my-events`}
 							className="button button--browse button--small">
+							<FontAwesomeIcon icon={faReply} />
 							Back to my events
 						</Link>
 						<Link

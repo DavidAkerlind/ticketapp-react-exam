@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import { useParams } from 'react-router-dom';
 import EventDetails from '../../components/EventDetails/EventDetails';
 import TicketBox from '../../components/TicketBox/TicketBox';
+import BackButton from '../../components/BackButton/BackButton';
 
 function EventDetailPage() {
 	const { id } = useParams();
@@ -16,10 +17,13 @@ function EventDetailPage() {
 	return (
 		<section className="page page-event">
 			<h1 className="page__header">Event</h1>
-			<h2 className="page__sub-header">
-				You are about to score <br />
-				some tickets to
-			</h2>
+			<section className="page-event__header-section">
+				<BackButton />
+				<h2 className="page__sub-header">
+					You are about to score <br />
+					some tickets to
+				</h2>
+			</section>
 			{event ? (
 				<form>
 					<EventDetails event={event} />

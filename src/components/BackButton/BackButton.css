@@ -1,0 +1,13 @@
+.button--back {
+	background-color: transparent;
+	margin: 0;
+	width: 3rem;
+	margin-left: -3rem;
+	padding-right: 8vw;
+	border: none;
+	font-size: 2rem;
+}
+
+.button--back:active {
+	color: var(--lighter-gray-text);
+}

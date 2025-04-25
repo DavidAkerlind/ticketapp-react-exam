@@ -66,7 +66,7 @@
 
 .ticket-card__ticket-id {
 	font-weight: 700;
-	color: var(--light-gray-text);
+	color: var(--dark-gray-text);
 	letter-spacing: 0.5ch;
 }
 

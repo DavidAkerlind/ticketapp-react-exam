@@ -3,6 +3,8 @@ import './TicketBox.css';
 import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 // Ganska lång komponent funderade på om man skulle göra två olika filer för varje variant
 //  och sedan importera dem här, och returnera den som mann vill ha?
@@ -70,7 +72,7 @@ function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 							className="event-details__button event-details__button--increase"
 							onClick={handleDecrease}
 							aria-label="Decrease ticket-amount">
-							−
+							<FontAwesomeIcon icon={faMinus} />
 						</button>
 						<span className="event-details__quantity-amount">
 							{amount}
@@ -79,7 +81,7 @@ function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 							className="event-details__button event-details__button--decrease"
 							onClick={handleIncrease}
 							aria-label="Increase ticket-amount">
-							+
+							<FontAwesomeIcon icon={faPlus} />
 						</button>
 					</div>
 				</section>
@@ -120,7 +122,7 @@ function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 						className="event-details__button event-details__button--increase"
 						onClick={handleDecreaseInCart}
 						aria-label="Decrease ticket-amount">
-						−
+						<FontAwesomeIcon icon={faMinus} />
 					</button>
 					<span className="event-details__quantity-amount">
 						{amount}
@@ -129,7 +131,7 @@ function TicketBox({ event, variant = 'price', startAmount = 1 }) {
 						className="event-details__button event-details__button--decrease"
 						onClick={handleIncreaseInCart}
 						aria-label="Increase ticket-amount">
-						+
+						<FontAwesomeIcon icon={faPlus} />
 					</button>
 				</div>
 			</section>
