@@ -16,12 +16,26 @@
 	--black: #000000;
 	--border-r4: 4px;
 }
-
+/*  ==== RESET ==== */
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 }
+
+a {
+	text-decoration: none;
+}
+
+button {
+	border: none;
+}
+
+ul {
+	list-style-type: none;
+}
+
+/*  ==== BASIC STYLING ===== */
 
 .page {
 	font-family: 'Fira Sans', sans-serif;
@@ -73,16 +87,4 @@
 
 .d-none {
 	display: none;
-}
-
-a {
-	text-decoration: none;
-}
-
-button {
-	border: none;
-}
-
-ul {
-	list-style-type: none;
 }
