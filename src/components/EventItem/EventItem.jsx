@@ -56,7 +56,7 @@ function EventItem({ event, variant = 'price', amount, eventId }) {
 						<p className="event-item__location">{where}</p>
 						<section className="event-item__details">
 							<p className="event-item__time-details">
-								<time dateTime={when.from}>{when.from}</time> -
+								<time dateTime={when.from}>{when.from}</time> -{' '}
 								<time dateTime={when.to}>{when.to}</time>
 							</p>
 							{variant === 'price' ? (

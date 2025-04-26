@@ -4,11 +4,18 @@ import TicketBox from '../../components/TicketBox/TicketBox';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../../store/useCartStore';
 import { useTicketStore } from '../../store/useTicketStore';
+import confetti from 'canvas-confetti';
 
 function OrderSummaryPage() {
 	const { clearCart, cartEvents } = useCartStore();
 	const { generateTicketsFromCart } = useTicketStore();
 	const handlePurchase = (e) => {
+		confetti({
+			particleCount: 70,
+			spread: 40,
+			origin: { y: 0.8 },
+			colors: ['#3ec4bf', '#f56b9a', '#ffffff'],
+		});
 		generateTicketsFromCart(cartEvents);
 		clearCart();
 	};
