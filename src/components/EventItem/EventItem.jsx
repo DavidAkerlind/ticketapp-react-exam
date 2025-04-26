@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import { useTicketStore } from '../../store/useTicketStore';
 import './EventItem.css';
+import { isEventOver } from '../../utils/utils.js';
 
 function EventItem({ event, variant = 'price', amount, eventId }) {
 	const { id, name, price, where, when } = event;
@@ -23,7 +24,7 @@ function EventItem({ event, variant = 'price', amount, eventId }) {
 				aria-label={
 					variant === 'price'
 						? `Read more about the event: ${name} on ${when.date}`
-						: `show your tickets for the event: ${event.eventName} `
+						: `Show your tickets for the event: ${event.eventName} `
 				}>
 				<article className="event-item">
 					<header className="event-item__date">
@@ -36,7 +37,7 @@ function EventItem({ event, variant = 'price', amount, eventId }) {
 					</header>
 
 					<section className="event-item__content">
-						{variant === 'ticket' ? (
+						{variant === 'ticket' && isEventOver(event) ? (
 							<div className="event-item__flex">
 								<h2 className="event-item__title">
 									{name ? name : event.eventName}

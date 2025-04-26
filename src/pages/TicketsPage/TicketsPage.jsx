@@ -8,7 +8,7 @@ import TicketCarousel from '../../components/TicketCarousel/TicketCarousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReply } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faUndo } from '@fortawesome/free-solid-svg-icons';
+import { isEventOver } from '../../utils/utils.js';
 
 function TicketsPage() {
 	const { id } = useParams();
@@ -43,12 +43,16 @@ function TicketsPage() {
 							<FontAwesomeIcon icon={faReply} />
 							Back to my events
 						</Link>
-						<Link
-							onClick={handleRemove}
-							className="button button--remove-big button--small">
-							Remove used tickets
-							<FontAwesomeIcon icon={faTrash} />
-						</Link>
+						{isEventOver(allTickets[currentIndex]) ? (
+							<Link
+								onClick={handleRemove}
+								className="button button--remove-big button--small">
+								Remove used tickets
+								<FontAwesomeIcon icon={faTrash} />
+							</Link>
+						) : (
+							''
+						)}
 					</section>
 				</section>
 			) : (

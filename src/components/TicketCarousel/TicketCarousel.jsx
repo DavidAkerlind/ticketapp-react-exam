@@ -17,11 +17,10 @@ function TicketCarousel({
 	direction,
 	setDirection,
 }) {
+	// försökte med någon peek effekt på de näst kommande korten men buggade bara massor
 	const x = useMotionValue(0);
-	const prevTransform = useTransform(x, [-200, 0, 200], [-150, -230, -30]);
-	const nextTransform = useTransform(x, [-200, 0, 200], [-30, -230, -150]);
-	const prevRotate = useTransform(x, [-200, 0, 200], [30, 45, 60]);
-	const nextRotate = useTransform(x, [-200, 0, 200], [-60, -45, -30]);
+	const prevTransform = useTransform(x, [-200, 0, 200], [-200, -255, 100]);
+	const nextTransform = useTransform(x, [-200, 0, 200], [-200, -255, 100]);
 
 	const handlers = useSwipeable({
 		onSwipedLeft: () => {
@@ -53,7 +52,6 @@ function TicketCarousel({
 						className="ticket-preview previous"
 						style={{
 							left: prevTransform,
-							rotateY: prevRotate,
 						}}>
 						<TicketCard ticket={tickets[currentIndex - 1]} />
 					</motion.div>
@@ -102,7 +100,6 @@ function TicketCarousel({
 						className="ticket-preview next"
 						style={{
 							right: nextTransform,
-							rotateY: nextRotate,
 						}}>
 						<TicketCard ticket={tickets[currentIndex + 1]} />
 					</motion.div>

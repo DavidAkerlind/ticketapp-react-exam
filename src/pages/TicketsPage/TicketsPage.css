@@ -30,7 +30,7 @@
 	pointer-events: none;
 	/* filter: blur(1px); */
 	transition: all 0.3s ease;
-	z-index: -1;
+	z-index: -2;
 }
 
 .page-tickets__buttons {

@@ -26,7 +26,7 @@ function TicketCard({ ticket }) {
 
 			<section className="ticket-card__when-section">
 				<section className="ticket-card__when-item">
-					<p className="ticket-card__sub-header">WHERE</p>
+					<p className="ticket-card__sub-header">WHEN</p>
 
 					<h2
 						aria-label="Event-location"

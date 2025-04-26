@@ -27,3 +27,52 @@ export const generateTicketsForEvent = (event) => {
 		where: event.where,
 	}));
 };
+
+export const isEventOver = (event) => {
+	console.log(event);
+	const now = new Date();
+
+	const { date, to } = event.when;
+
+	// Hämta dag och månadsnamn från eventets datum
+	const [day, monthName] = date.split(' ');
+
+	// Månader
+	const monthNames = [
+		'Januari',
+		'Februari',
+		'Mars',
+		'April',
+		'Maj',
+		'Juni',
+		'Juli',
+		'Augusti',
+		'September',
+		'Oktober',
+		'November',
+		'December',
+	];
+	const monthIndex = monthNames.findIndex(
+		(month) => month.toLowerCase() === monthName.toLowerCase()
+	);
+
+	if (monthIndex === -1) {
+		console.error('Unknown month:', monthName);
+		return false; // Om vi inte hittar månaden, visa inte knappen
+	}
+
+	// Splitta sluttiden ("23:00") till timmar och minuter
+	const [hours, minutes] = to.split(':').map(Number);
+
+	// Skapa ett Date-objekt för eventets slut
+	const eventEndDate = new Date();
+	eventEndDate.setMonth(monthIndex);
+	eventEndDate.setDate(Number(day));
+	eventEndDate.setHours(hours);
+	eventEndDate.setMinutes(minutes);
+	eventEndDate.setSeconds(0);
+	eventEndDate.setMilliseconds(0);
+
+	// Jämför: är tiden just nu senare än tiden för eventets slut? Om ja return true om inte false
+	return now > eventEndDate;
+};
