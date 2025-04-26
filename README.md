@@ -35,6 +35,10 @@ Detta bibliotek gör det möjligt att swipa mellan biljetter, både på mobil oc
 
 Jag använder detta bibliotek för att generera streckkoder till varje biljett. Det ger en realistisk känsla av att biljetterna är digitala och kan scannas, vilket passar bra för den typ av app jag byggt.
 
-### 4. (Extra) useCartStore Zustand
+### 4. Canvas Confetti
 
-Jag använder `useCartStore`, en custom hook byggd med Zustand, för att hantera applikationens globala state. Den innehåller all logik för att lägga till, uppdatera och ta bort biljetter i varukorgen, samt för att generera färdiga biljetter som sedan visas för användaren. All data synkas även med `localStorage`, vilket gör att informationen sparas mellan sessioner. Det gör Zustand till ett perfekt val för just detta projekt eftersom det är lättviktigt, snabbt och kräver minimalt med boilerplate-kod.
+Jag använder `canvas-confetti` bibloteket som är en lättanvänt biblotek som renderar konfettieffekter direkt i ett `<canvas>`-element i webbläsaren. Med `canvas-confetti` kan man skapa olika typer av konfettianimationer och anpassa dem med parametrar i javasSript koden som färger, antal partiklar, spridning och ursprung. Jag använder den för att ge dikrkt visuell feedback till användaren när man köper bijetter till ett event på min sida. Det tycket jag passar superbra in på just denna app som ska skapa glädje och spänning inför kommmande event. det blir inte bara tydligare att man lyckets säkra sin plats till ett event men också att man får en slags "belöning" för det kan ge en kick. Jag har gjort så att konfettiregnet är i samma färger som resten av appen för att skapa en helhets-känsla.
+
+### 5. Font Awesome Icons
+
+Jag använder `@fortawesome/fontawesome-svg-core`, `@fortawesome/free-solid-svg-icons` och `@fortawesome/react-fontawesome` som tillsammans gör det möjligt att använda Font Awesome-ikoner direkt i React. Dessa paket gör det enkelt att importera ikoner och visa dem som komponenter i koden, vilket ger en tydlig och skalbar ikonlösning baserad på SVG-format. Jag använder ikonerna för att tydligt visa funktioner som till exempel att gå tillbaka eller ta bort något, vilket gör användarupplevelsen mer intuitiv. Jag tycker det passar perfekt i min app där det är viktigt att snabbt förstå vad knappar och funktioner gör utan att behöva läsa en massa text. Eftersom ikonerna också kan anpassas i färg och storlek, har jag även försökt göra dem så att de smälter in i appens visuella stil och förstärker helhetskänslan.
