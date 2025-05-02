@@ -18,7 +18,7 @@ function SearchBar({ events, handleSearch }) {
 			<input
 				aria-label="Search Events"
 				id="search-input"
-				type="text"
+				type="search"
 				className="searchbar__input"
 				onChange={handleSearch}
 			/>
