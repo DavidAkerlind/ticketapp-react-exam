@@ -12,10 +12,11 @@
 		color: var(--light-gray-text);
 		font-size: 1.3rem;
 		margin-right: 0.75rem;
+		transition: all 0.2s ease-in-out;
 	}
 
-	.searchbar__icon:hover {
-		color: var(--dark-gray-text);
+	.searchbar__icon:active {
+		scale: 0.9;
 	}
 
 	.searchbar__input {

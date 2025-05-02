@@ -18,7 +18,6 @@ const AllEventsPage = () => {
 	}, [data, setEventList]);
 
 	const handleSearch = (input) => {
-		console.log(input.target.value);
 		updateBySearch(input.target.value);
 	};
 

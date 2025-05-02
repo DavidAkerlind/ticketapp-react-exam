@@ -3,10 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 function SearchBar({ events, handleSearch }) {
-	console.log(events);
-
 	return (
-		<form className="searchbar">
+		<form
+			onSubmit={(event) => {
+				event.preventDefault();
+			}}
+			className="searchbar">
 			<button>
 				<FontAwesomeIcon
 					icon={faMagnifyingGlass}
