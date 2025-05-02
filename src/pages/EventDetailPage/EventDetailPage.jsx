@@ -1,5 +1,5 @@
 import './EventDetailPage.css';
-import { useFetch } from '../../hooks/useFetch';
+import { useFetch } from '../../API/useFetch';
 import NavBar from '../../components/NavBar/NavBar';
 import { useParams } from 'react-router-dom';
 import EventDetails from '../../components/EventDetails/EventDetails';

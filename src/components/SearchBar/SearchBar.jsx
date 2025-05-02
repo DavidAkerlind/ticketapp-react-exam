@@ -2,7 +2,9 @@ import './SearchBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-function SearchBar() {
+function SearchBar({ events, handleSearch }) {
+	console.log(events);
+
 	return (
 		<form className="searchbar">
 			<button>
@@ -16,6 +18,7 @@ function SearchBar() {
 				id="search-input"
 				type="text"
 				className="searchbar__input"
+				onChange={handleSearch}
 			/>
 		</form>
 	);
